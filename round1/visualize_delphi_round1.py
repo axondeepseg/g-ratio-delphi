@@ -28,6 +28,41 @@ STYLESHEET_PATH = Path(__file__).parent / "round1_style.css"
 with open(str(STYLESHEET_PATH), "r") as f:
     STYLESHEET = f.read()
 
+def render_comments(df, col, username_col, anonymize=True, likert_col=None):
+    """
+    Render comments as HTML divs with styling.
+    
+    Args:
+        df: DataFrame
+        col: Column name containing comments
+        username_col: Column name with usernames
+        anonymize: Whether to anonymize usernames
+        likert_col: Optional column name for Likert responses to determine color
+    
+    Returns:
+        HTML string with rendered comments
+    """
+    comments_html = ""
+    comment_indices = df[col].dropna().index.tolist()
+    
+    for comment_idx in comment_indices:
+        # Determine color
+        if likert_col:
+            response = df[likert_col].iloc[comment_idx]
+            color = LIKERT_COLORS.get(response, '#cccccc')
+            border_style = f'border: 4px solid {color};'
+        else:
+            border_style = 'border: 4px solid #95a5a6;'
+        
+        # Get username for tooltip if not anonymized
+        username = df[username_col].iloc[comment_idx] if not anonymize else "Anonymous"
+        title_attr = f'title="{username}"' if not anonymize else ""
+        
+        comment = df[col].iloc[comment_idx]
+        comments_html += f'<div class="comment-item" style="{border_style} padding: 10px; border-radius: 5px; margin-bottom: 10px;" {title_attr}>{comment}</div>'
+    
+    return comments_html
+
 def generate_report(csv_path, output_filename="survey_report.html", anonymize=True):
     df = pd.read_csv(csv_path)
     
@@ -130,31 +165,13 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
             # --- PROCESS TEXT DATA ---
             comments_found = True
             comments = df[col].dropna().tolist()
+            prev_col = df.columns[df.columns.get_loc(col) - 1]
             if comments:
                 html_content += f"""
                 <details>
                     <summary>Additional comments ({len(comments)})</summary>
                     <div class="comments-box">
-                """
-                # Assuming the previous column is the Likert question
-                prev_col = df.columns[df.columns.get_loc(col) - 1]
-                likert_responses = df[prev_col].dropna().tolist()
-
-                comment_indices = df[col].dropna().index.tolist()
-                for i, comment_idx in enumerate(comment_indices):
-                    # Get the corresponding Likert response for this row
-                    response = df[prev_col].iloc[comment_idx]
-                    color = LIKERT_COLORS.get(response, '#cccccc')
-
-                    # Get username for tooltip if not anonymized
-                    username = df[username_col].iloc[comment_idx] if not anonymize else "Anonymous"
-                    title_attr = f'title="{username}"'
-                    
-                    comment = df[col].iloc[comment_idx]
-                    dynamic_style = f'border: 4px solid {color};'
-                    html_content += f'<div class="comment-item" style="{dynamic_style}" {title_attr}>{comment}</div>'
-                
-                html_content += """
+                        {render_comments(df, col, username_col, anonymize, likert_col=prev_col)}
                     </div>
                 </details>
                 """
@@ -168,25 +185,18 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
     html_content += f"""
     <div class="question-block">
     <h2>Q{question_nb+1}: {missing_stuff_col}</h2>
-    <details>
-        <summary>Comments ({df[missing_stuff_col].dropna().shape[0]})</summary>
+    <i>Number of responses: {df[missing_stuff_col].dropna().shape[0]}</i><br><br>
         <div class="comments-box">
-    """
-    for comment in df[missing_stuff_col].dropna().tolist():
-        html_content += f'<div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;">"{comment}"</div>'
-    html_content += f"""
+            {render_comments(df, missing_stuff_col, username_col, anonymize)}
         </div>
-    </details>
     </div> <!-- Close question-block -->
     <div class="question-block">
     <h2>Q{question_nb+2}: {concerns_col}</h2>
-    <details>
-        <summary>Comments ({df[concerns_col].dropna().shape[0]})</summary>
+    <i>Number of responses: {df[concerns_col].dropna().shape[0]}</i><br><br>
         <div class="comments-box">
+            {render_comments(df, concerns_col, username_col, anonymize)}
+        </div>
     """
-    for comment in df[concerns_col].dropna().tolist():
-        html_content += f'<div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;">"{comment}"</div>'
-    html_content += "</div></details>"
 
     html_content += "</div></body></html>" # Close container and body 
     
