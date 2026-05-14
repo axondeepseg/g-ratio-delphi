@@ -1,0 +1,79 @@
+body {
+    font-family: sans-serif;
+    margin: 40px;
+    background-color: #f4f7f6;
+    color: #333; 
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+.question-block {
+    margin-bottom: 60px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 40px;
+}
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    font-family: Times New Roman, serif;
+    font-size: 3em;
+}
+h2 {
+    color: #2980b9;
+    font-size: 1.4em;
+}
+.top2-badge {
+    background: #27ae60;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.comments-box {
+    padding: 15px;
+    background: #d5dbdb;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+.comment-item {
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-left: 4px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    font-style: normal;
+    font-size: 0.95em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s;
+}
+.comment-item:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+details {
+    margin-top: 20px;
+}
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #2980b9;
+    padding: 12px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    user-select: none;
+    transition: background 0.2s;
+}
+summary:hover {
+    background: #d5dbdb;
+}
+details[open] summary {
+    background: #d5dbdb; border-radius: 5px 5px 0 0;
+}
