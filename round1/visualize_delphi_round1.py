@@ -8,7 +8,6 @@ and the consensus among experts.
 import pandas as pd
 import plotly.express as px
 import plotly.offline as pyo
-import plotly.io as pio
 
 import argparse
 from pathlib import Path
@@ -65,6 +64,9 @@ def render_comments(df, col, username_col, anonymize=True, likert_col=None):
 
 def generate_report(csv_path, output_filename="survey_report.html", anonymize=True):
     df = pd.read_csv(csv_path)
+    # some questions had "Strongly Disagree" with a capital D
+    for col in df.columns:
+        df[col] = df[col].str.replace("Strongly Disagree", "Strongly disagree", regex=False)
     
     html_content = f"""
     <html>
@@ -166,20 +168,19 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
             comments_found = True
             comments = df[col].dropna().tolist()
             prev_col = df.columns[df.columns.get_loc(col) - 1]
-            if comments:
-                html_content += f"""
-                <details>
-                    <summary>Additional comments ({len(comments)})</summary>
-                    <div class="comments-box">
-                        {render_comments(df, col, username_col, anonymize, likert_col=prev_col)}
-                    </div>
-                </details>
-                """
+            html_content += f"""
+            <details>
+                <summary>Additional comments ({len(comments)})</summary>
+                <div class="comments-box">
+                    {render_comments(df, col, username_col, anonymize, likert_col=prev_col)}
+                </div>
+            </details>
+            """
             html_content += "</div>" # Close question-block
 
     # Close last question-block if necessary
     if not comments_found:
-                html_content += "</div>"
+        html_content += "</div>"
 
     # finally, add last two short-answer questions (missing_stuff_col and concerns_col)
     html_content += f"""
