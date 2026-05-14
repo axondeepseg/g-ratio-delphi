@@ -8,6 +8,7 @@ and the consensus among experts.
 import pandas as pd
 import plotly.express as px
 import plotly.offline as pyo
+import plotly.io as pio
 
 import argparse
 from pathlib import Path
@@ -38,7 +39,7 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
     </head>
     <body>
         <div class="container">
-            <h1>Delphi Survey Analysis Report</h1>
+            <h1>Delphi Survey Round 1 Report</h1>
             <p> <i>Note: "Top 2 Score" represents the percentage of respondents who selected either "Agree" or "Strongly agree". </i></p>
     """
 
@@ -70,6 +71,7 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
                  color_discrete_map={'Primary Expertise': '#2980b9', 'Secondary Expertise': '#8e44ad'})
     fig.update_layout(xaxis_title="Expertise Area", yaxis_title="Number of Respondents", legend_title="")
     expertise_chart_html = pyo.plot(fig, include_plotlyjs='cdn', output_type='div')
+
     html_content += f"""
     <div class="question-block">
         <h2>Expertise Distribution</h2>
@@ -137,20 +139,20 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
                 # Assuming the previous column is the Likert question
                 prev_col = df.columns[df.columns.get_loc(col) - 1]
                 likert_responses = df[prev_col].dropna().tolist()
-                
-                for i, comment in enumerate(comments):
-                    # Get the corresponding Likert response color
-                    if i < len(likert_responses):
-                        response = likert_responses[i]
-                        color = LIKERT_COLORS.get(response, '#cccccc')
-                    else:
-                        color = '#cccccc'
+
+                comment_indices = df[col].dropna().index.tolist()
+                for i, comment_idx in enumerate(comment_indices):
+                    # Get the corresponding Likert response for this row
+                    response = df[prev_col].iloc[comment_idx]
+                    color = LIKERT_COLORS.get(response, '#cccccc')
 
                     # Get username for tooltip if not anonymized
-                    username = df[username_col].iloc[i] if not anonymize else "Anonymous"
+                    username = df[username_col].iloc[comment_idx] if not anonymize else "Anonymous"
                     title_attr = f'title="{username}"'
                     
-                    html_content += f'<div class="comment-item" style="border: 4px solid {color}; padding: 10px; border-radius: 5px; margin-bottom: 10px; cursor: pointer;" {title_attr}>{comment}</div>'
+                    comment = df[col].iloc[comment_idx]
+                    dynamic_style = f'border: 4px solid {color};'
+                    html_content += f'<div class="comment-item" style="{dynamic_style}" {title_attr}>{comment}</div>'
                 
                 html_content += """
                     </div>
