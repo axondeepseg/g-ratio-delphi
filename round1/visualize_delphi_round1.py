@@ -11,6 +11,7 @@ import plotly.offline as pyo
 
 import argparse
 from pathlib import Path
+from bs4 import BeautifulSoup
 
 # --- 1. SETTINGS & MAPPING ---
 # Ensure these match your Google Form exactly
@@ -62,8 +63,11 @@ def render_comments(df, col, username_col, anonymize=True, likert_col=None):
     
     return comments_html
 
-def generate_report(csv_path, output_filename="survey_report.html", anonymize=True):
+def generate_report(csv_path, questions_html_path, output_filename="survey_report.html", anonymize=False):
     df = pd.read_csv(csv_path)
+    with open(questions_html_path, "r", encoding="utf-8") as f:
+        questions_html = f.read()
+    question_soup = BeautifulSoup(questions_html, "html.parser")
     # some questions had "Strongly Disagree" with a capital D
     for col in df.columns:
         df[col] = df[col].str.replace("Strongly Disagree", "Strongly disagree", regex=False)
@@ -129,6 +133,9 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
             question_nb += 1
             comments_found = False
 
+            question_id = f"q{question_nb}"
+            question_html = str(question_soup.find(id=question_id))
+
             # --- PROCESS LIKERT DATA ---
             counts = df[col].value_counts().reindex(LIKERT_ORDER, fill_value=0)
             total = counts.sum()
@@ -158,7 +165,8 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
             # Append to HTML
             html_content += f"""
             <div class="question-block">
-                <h2>Q{question_nb}: {col}</h2>
+                {question_html}
+                <br>
                 <div class="top2-badge" style="background-color: {top2_badge_color};">Top 2 Score (Agreement): {top2_pct:.1f}%</div>
                 {chart_html}
             """
@@ -209,11 +217,12 @@ def generate_report(csv_path, output_filename="survey_report.html", anonymize=Tr
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a HTML survey report from a CSV file.")
     parser.add_argument("csv_path", help="Path to the CSV file containing survey results.")
+    parser.add_argument("questions_html", help="Path to the master_questions.html file with the question text and formatting.")
     parser.add_argument("--output", default="survey_report.html", help="Output HTML file name (default: survey_report.html)")
-    parser.add_argument("--show-names", action="store_true", help="Show respondent names on hover")
+    parser.add_argument("--hide-names", default=False, action="store_true", help="Show respondent names on hover")
 
     
     args = parser.parse_args()
-    anonymize = not args.show_names
-    generate_report(args.csv_path, args.output, anonymize)
+    anonymize = not args.hide_names
+    generate_report(args.csv_path, args.questions_html, args.output, anonymize)
     print("Note that you may want to rename some column headers in the CSV for better readability in the report.")
