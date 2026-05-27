@@ -1,0 +1,117 @@
+<section id="q1">
+    <h2>Q1</h2>
+    <p>Transmission Electron Microscopy (TEM) is suitable to quantify the g-ratio.</p>
+</section>
+
+<section id="q2">
+    <h2>Q2</h2>
+    <p>Scanning Electron Microscopy (SEM) is suitable to quantify the g-ratio.</p>
+</section>
+
+<section id="q3">
+    <h2>Q3</h2>
+    <p>Bright-Field (BF) Optical Microscopy is suitable to quantify the g-ratio.</p>
+</section>
+
+<section id="q4">
+    <h2>Q4</h2>
+    <p>Coherent Anti-Stokes Raman Scattering (CARS) microscopy is suitable to quantify the g-ratio.</p>
+</section>
+
+<section id="q5">
+    <h2>Q5</h2>
+    <p>If myelin splitting/decompaction affects > 20% of an axon's contour, the axon should be excluded from the g-ratio dataset.</p>
+    <img src="images/q5_20perc_splitting.png" alt="Example of axon with myelin splitting/decompaction, with >20% of the axon contour affected." width="60%">
+</section>
+
+<section id="q6">
+    <h2>Q6</h2>
+    <p>In a given image, if >20% of all axons have artefacts, the image should not be used for g-ratio quantification.</p>
+</section>
+
+<section id="q7">
+    <h2>Q7</h2>
+    <p>If axons are omitted from g-ratio analysis due to fixation artefacts (see image), publications should include a visual guide illustrating acceptable vs. unacceptable axon quality. (<i>note: if axons have abnormalities due to the disease models but are not excluded, they would go in the accepted column.</i>)</p>
+    <img src="images/q7_quality_guide_v4.png" alt="Visual guide">
+</section>
+
+<section id="q8">
+    <h2>Q8</h2>
+    <p>For MANUAL measurements, a line-based approach (tracing one or more diameter lines directly on the axon) should be the recommended method.</p>
+</section>
+
+<section id="q9">
+    <h2>Q9</h2>
+    <p>When using line-based measurements, a single measurement per axon and a single measurement per myelin is sufficient. </p>
+</section>
+
+<section id="q10">
+    <h2>Q10</h2>
+    <p>When using line-based measurements, the fiber diameter (or myelin thickness) should be measured along the same axis as the axon diameter line measurement.</p>
+    <img src="images/q10_line_measurement_axis.png" alt="Illustration of line-based measurement axis for axon and fiber diameter.">
+</section>
+
+<section id="q11">
+    <h2>Q11</h2>
+    <p>If using single line-based measurements (i.e., a single measurement per axon), axon diameter in non-circular axons should be measured along the shortest axis.</p>
+    <img src="images/q11_Linebased.png" alt="Illustration of single measurement of diameter">
+</section>
+
+<section id="q12">
+    <h2>Q12</h2>
+    <p>For AUTOMATED/semi-automated pipelines, area-based measurements (derived from segmentation masks) should be the recommended method.</p>
+    <img src="images/q12_equivalent_circle.png" alt="Illustration of area-based measurement using equivalent circle diameter approximation." width="50%">
+</section>
+
+<section id="q13">
+    <h2>Q13</h2>
+    <p>When using area-based measurements, an equivalent circle diameter to the segmented area should be the default axon diameter approximation.</p>
+    <img src="images/q13_equivalent_circle_approx.png" alt="Illustration of equivalent circle diameter approximation for a single axon." width="50%">
+    <p><i>Illustration of the equivalent circle diameter approximation for multiple axons.</i></p>
+    <img src="images/q13_circle_approx.gif" alt="Animation illustrating the equivalent circle diameter approximation for multiple axons.">
+</section>
+
+<section id="q14">
+    <h2>Q14</h2>
+    <p>When using area-based measurements in conjunction with the equivalent circle diameter, it is necessary to exclude axons according to a predefined criterion for circularity (or roundness).</p>
+</section>
+
+<section id="q15">
+    <h2>Q15</h2>
+    <p>When using area-based measurements, the minor axis of an ellipse fitted to the segmented area should be the default axon diameter approximation, to account for non-orthogonal sections and irregular shapes.</p>
+    <img src="images/q15_ellipse_approx.png" alt="Illustration of ellipse-based diameter approximation for a single axon.">
+    <p><i>Illustration of the ellipse-based diameter approximation for multiple axons.</i></p>
+    <img src="images/q15_ellipse_approx.gif" alt="Animation illustrating the ellipse-based diameter approximation for multiple axons.">
+</section>
+
+<section id="q16">
+    <h2>Q16</h2>
+    <p>
+        In the presence of enlarged inner tongue, axon diameter should be measured within the axon, and fiber diameter should exclude the area between the axolemma and the compact myelin.<br>
+        For example, with <b>line-based measurements</b>, the axon should be measured inside the red contour, and the myelin thickness inside the compact myelin. With <b>area-based measurements</b>, the area between red and yellow contours should be removed from the total fiber area.<br>
+        <i>Illustration below adapted from Figure 4, “White matter integrity in mice requires continuous myelin synthesis at the inner tongue” by Meschkat et al., Nature Communications (2022), used under CC BY 4.0 / Cropped from original.</i>
+    </p>
+    <img src="images/q16_inner_tongue.png" alt="Illustration of measurement approach in the presence of enlarged inner tongue, adapted from Meschkat et al., Nature Communications (2022).">
+    <p><i>Other example</i></p>
+    <img src="images/q16_periaxonal_space.png" alt="Alternative illustration." width="50%">
+</section>
+
+<section id="q17">
+    <h2>Q17</h2>
+    <p>Publications reporting g-ratio should include: the imaging modality and parameters, the effective pixel dimension, the measurement method used (line/contour/area), the diameter approximation (circle/ellipse), and any circularity or quality filters applied.</p>
+</section>
+
+<section id="q18">
+    <h2>Q18</h2>
+    <p>Data and segmentation masks should be shared in a public repository (e.g., DANDI, OSF, Zenodo) alongside the publication, with well-documented quality control traceability (who performed measurements, inter-rater reliability metrics).</p>
+</section>
+
+<section id="q19">
+    <h2>Q19</h2>
+    <p>Are there any important methodological considerations for g-ratio quantification that are missing from this survey?</p>
+</section>
+
+<section id="q20">
+    <h2>Q20</h2>
+    <p>Do you have concerns about the scope or framing of the consensus recommendations as outlined above?</p>
+</section>

@@ -225,4 +225,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     anonymize = not args.hide_names
     generate_report(args.csv_path, args.questions_html, args.output, anonymize)
-    print("Note that you may want to rename some column headers in the CSV for better readability in the report.")

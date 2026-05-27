@@ -77,3 +77,11 @@ summary:hover {
 details[open] summary {
     background: #d5dbdb; border-radius: 5px 5px 0 0;
 }
+
+img {
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+
+}
