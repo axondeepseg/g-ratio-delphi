@@ -6,6 +6,6 @@ HTML report for convenient visualization of respondents' answers.
 The dependencies required for this tool are:
 ```
 pandas
-plotly
+beautifulsoup4
 ```
 

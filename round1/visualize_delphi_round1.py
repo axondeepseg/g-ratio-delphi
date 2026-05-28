@@ -6,8 +6,6 @@ and the consensus among experts.
 '''
 
 import pandas as pd
-import plotly.express as px
-import plotly.offline as pyo
 
 import argparse
 from pathlib import Path
@@ -118,6 +116,43 @@ def create_likert_chart_html(counts, likert_order, likert_colors):
     chart_html += '</div>'
     return chart_html
 
+def render_expertise_squares(count, css_class):
+    squares = [f'<div class="expertise-square {css_class}" ></div>' for i in range(count)]
+    return ''.join(squares)
+
+def create_expertise_chart_html(expertise_df):
+    expertise_counts = (
+        expertise_df
+        .groupby(['Expertise', 'Expertise Type'])
+        .size()
+        .unstack(fill_value=0)
+        .reindex(columns=['Primary Expertise', 'Secondary Expertise'], fill_value=0)
+    )
+
+    chart_html = '<div class="expertise-chart">'
+    chart_html += '''
+        <div class="expertise-legend">
+            <span class="legend-pill primary">Primary Expertise</span>
+            <span class="legend-pill secondary">Secondary Expertise</span>
+        </div>
+    '''
+
+    for expertise, row in expertise_counts.sort_index().iterrows():
+        primary = int(row['Primary Expertise'])
+        secondary = int(row['Secondary Expertise'])
+
+        chart_html += f'''
+        <div class="expertise-row">
+            <div class="expertise-label">{expertise}</div>
+            <div class="expertise-squares">
+                {render_expertise_squares(primary, "primary")}
+                {render_expertise_squares(secondary, "secondary")}
+            </div>
+        </div>
+        '''
+    chart_html += '</div>'
+    return chart_html
+
 def generate_report(csv_path, questions_html_path, output_filename="survey_report.html", anonymize=False):
     df = pd.read_csv(csv_path)
     with open(questions_html_path, "r", encoding="utf-8") as f:
@@ -163,10 +198,8 @@ def generate_report(csv_path, questions_html_path, output_filename="survey_repor
          primary_expertise_col: 'Primary Expertise', 
          secondary_expertise_col: 'Secondary Expertise'
     })
-    fig = px.bar(expertise_df, x='Expertise', color='Expertise Type', title="Distribution of Primary and Secondary Expertises",
-                 color_discrete_map={'Primary Expertise': '#2980b9', 'Secondary Expertise': '#8e44ad'})
-    fig.update_layout(xaxis_title="Expertise Area", yaxis_title="Number of Respondents", legend_title="")
-    expertise_chart_html = pyo.plot(fig, include_plotlyjs='cdn', output_type='div')
+
+    expertise_chart_html = create_expertise_chart_html(expertise_df)
 
     html_content += f"""
     <div class="question-block">
