@@ -205,6 +205,7 @@ def generate_report(csv_path, questions_html_path, output_filename="survey_repor
                 agreement_badge_color = "#dc3246"  # Red for disagreement consensus
             else:
                 agreement_badge_color = "#95a5a6"  # Gray for no clear consensus
+            agreement_tooltip = f"title='{top2_count} agree, {bottom2_count} disagree'"
             
             chart_html = create_likert_chart_html(counts, LIKERT_ORDER, LIKERT_COLORS)
 
@@ -213,7 +214,7 @@ def generate_report(csv_path, questions_html_path, output_filename="survey_repor
             <div class="question-block">
                 {question_html}
                 <br>
-                <div class="top2-badge" style="background-color: {agreement_badge_color};">Agreement: {agreement_pct:.1f}%</div>
+                <div class="top2-badge" style="background-color: {agreement_badge_color};" {agreement_tooltip}>Agreement: {agreement_pct:.1f}%</div>
                 {chart_html}
             """
             
