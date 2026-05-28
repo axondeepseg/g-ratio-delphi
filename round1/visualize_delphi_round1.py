@@ -136,7 +136,7 @@ def generate_report(csv_path, questions_html_path, output_filename="survey_repor
     <body>
         <div class="container">
             <h1>Delphi Survey Round 1 Report</h1>
-            <p> <i>Note: "Top 2 Score" represents the percentage of respondents who selected either "Agree" or "Strongly agree". </i></p>
+            <p> <i>Note: For every question, the "Agreement" badge represents the fraction of respondents who agreed, without considering neutral responses. </i></p>
     """
 
     timestamp_col = df.columns[0]
@@ -195,19 +195,25 @@ def generate_report(csv_path, questions_html_path, output_filename="survey_repor
             counts = df[col].value_counts().reindex(LIKERT_ORDER, fill_value=0)
             total = counts.sum()
             
-            # Calculate Top 2 (Agree + Strongly Agree)
+            # Calculate agreement ()
             top2_count = counts.get('Agree', 0) + counts.get('Strongly agree', 0)
-            top2_pct = (top2_count / total) * 100 if total > 0 else 0
-            top2_badge_color = "#27ae60" if top2_pct > 80 else "#95a5a6"
+            bottom2_count = counts.get('Disagree', 0) + counts.get('Strongly disagree', 0)
+            agreement_pct = (top2_count / (top2_count + bottom2_count) * 100) if (top2_count + bottom2_count) > 0 else 0
+            if agreement_pct >= 75:
+                agreement_badge_color = "#27ae60"  # Green for agreement consensus
+            elif agreement_pct <= 15:
+                agreement_badge_color = "#dc3246"  # Red for disagreement consensus
+            else:
+                agreement_badge_color = "#95a5a6"  # Gray for no clear consensus
             
-            chart_html = create_likert_chart_html(counts, col, LIKERT_ORDER, LIKERT_COLORS)
+            chart_html = create_likert_chart_html(counts, LIKERT_ORDER, LIKERT_COLORS)
 
             # Append to HTML
             html_content += f"""
             <div class="question-block">
                 {question_html}
                 <br>
-                <div class="top2-badge" style="background-color: {top2_badge_color};">Top 2 Score (Agreement): {top2_pct:.1f}%</div>
+                <div class="top2-badge" style="background-color: {agreement_badge_color};">Agreement: {agreement_pct:.1f}%</div>
                 {chart_html}
             """
             
