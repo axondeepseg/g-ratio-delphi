@@ -17,16 +17,36 @@ from bs4 import BeautifulSoup
 # Ensure these match your Google Form exactly
 LIKERT_ORDER = ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree']
 LIKERT_COLORS = {
-    'Strongly disagree': "#ff0004", 
-    'Disagree': "#ff9429", 
-    'Neutral': '#ffffbf', 
-    'Agree': "#74ff86", 
-    'Strongly agree': "#1dac00"
+    'Strongly disagree': "#dc3246", 
+    'Disagree': "#ff9328", 
+    'Neutral': "#ffff94", 
+    'Agree': "#bcff79", 
+    'Strongly agree': "#28aa00"
 }
 
 STYLESHEET_PATH = Path(__file__).parent / "round1_style.css"
 with open(str(STYLESHEET_PATH), "r") as f:
     STYLESHEET = f.read()
+
+def get_contrast_color(hex_color):
+    """
+    Determine if text should be white or dark based on background color brightness.
+    
+    Args:
+        hex_color: Hex color string (e.g., "#ffffbf")
+    
+    Returns:
+        "white" or "#333333" (dark gray)
+    """
+    # Remove '#' and convert to RGB
+    hex_color = hex_color.lstrip('#')
+    r, g, b = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+    
+    # Calculate perceived brightness using the luminance formula
+    luminance = (r * 0.299 + g * 0.587 + b * 0.114) / 255
+    
+    # Use dark text for light backgrounds, white for dark backgrounds
+    return "#333333" if luminance > 0.5 else "white"
 
 def render_comments(df, col, username_col, anonymize=True, likert_col=None):
     """
@@ -62,6 +82,41 @@ def render_comments(df, col, username_col, anonymize=True, likert_col=None):
         comments_html += f'<div class="comment-item" style="{border_style} padding: 10px; border-radius: 5px; margin-bottom: 10px;" {title_attr}>{comment}</div>'
     
     return comments_html
+
+def create_likert_chart_html(counts, likert_order, likert_colors):
+    """
+    Create a pure HTML/CSS stacked horizontal bar chart for Likert data.
+    
+    Args:
+        counts: pd.Series with response counts indexed by response type
+        likert_order: List of response types in order
+        likert_colors: Dict mapping response type to color hex code
+    
+    Returns:
+        HTML string with the chart
+    """
+    total = counts.sum()
+    
+    chart_html = '<div class="likert-chart">'
+    chart_html += '<div class="likert-stacked-bar">'
+    
+    for response in likert_order:
+        count = counts.get(response, 0)
+        if count == 0:  # Skip responses with no answers
+            continue
+            
+        percentage = (count / total * 100) if total > 0 else 0
+        color = likert_colors.get(response, '#cccccc')
+        text_color = get_contrast_color(color)
+        chart_html += f'''
+        <div class="likert-segment" style="width: {percentage}%; background-color: {color}; color: {text_color};" title="{response}: {int(count)} respondents">
+            <span class="likert-segment-count">{int(count)}</span>
+        </div>
+        '''
+    
+    chart_html += '</div>'
+    chart_html += '</div>'
+    return chart_html
 
 def generate_report(csv_path, questions_html_path, output_filename="survey_report.html", anonymize=False):
     df = pd.read_csv(csv_path)
@@ -145,22 +200,7 @@ def generate_report(csv_path, questions_html_path, output_filename="survey_repor
             top2_pct = (top2_count / total) * 100 if total > 0 else 0
             top2_badge_color = "#27ae60" if top2_pct > 80 else "#95a5a6"
             
-            # Create Plotly Chart
-            fig_df = counts.reset_index()
-            fig_df.columns = ['Response', 'Count']
-            fig = px.bar(fig_df, x='Count', y=[col]*len(fig_df), color='Response', 
-                         orientation='h',
-                         color_discrete_map=LIKERT_COLORS,
-                         category_orders={"Response": LIKERT_ORDER})
-            fig.update_traces(hovertemplate='<b>%{fullData.name}</b><br>Count: %{x}<extra></extra>')
-            
-            fig.update_layout(
-                showlegend=True, height=250, margin=dict(l=20, r=20, t=20, b=20),
-                xaxis_title="Number of Respondents", yaxis_title="",
-                legend_title="", yaxis=dict(showticklabels=False)
-            )
-            
-            chart_html = pyo.plot(fig, include_plotlyjs='cdn', output_type='div')
+            chart_html = create_likert_chart_html(counts, col, LIKERT_ORDER, LIKERT_COLORS)
 
             # Append to HTML
             html_content += f"""
@@ -219,9 +259,8 @@ if __name__ == "__main__":
     parser.add_argument("csv_path", help="Path to the CSV file containing survey results.")
     parser.add_argument("questions_html", help="Path to the master_questions.html file with the question text and formatting.")
     parser.add_argument("--output", default="survey_report.html", help="Output HTML file name (default: survey_report.html)")
-    parser.add_argument("--hide-names", default=False, action="store_true", help="Show respondent names on hover")
+    parser.add_argument("--hide-names", action="store_true", help="Show respondent names on hover")
 
     
     args = parser.parse_args()
-    anonymize = not args.hide_names
-    generate_report(args.csv_path, args.questions_html, args.output, anonymize)
+    generate_report(args.csv_path, args.questions_html, args.output, args.hide_names)
