@@ -68,6 +68,8 @@ img {
     padding: 15px;
     background: #d5dbdb;
     border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
 }
 .comment-item {
     background: #ffffff;

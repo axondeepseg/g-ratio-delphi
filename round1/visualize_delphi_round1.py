@@ -279,18 +279,19 @@ def generate_report(csv_path, questions_html_path, output_filename, anonymize=Fa
         html_content += "</div>"
 
     # finally, add last two short-answer questions (missing_stuff_col and concerns_col)
+    special_style = 'style="border-top-right-radius: 5px; border-top-left-radius: 5px;"'
     html_content += f"""
     <div class="question-block">
     <h2>Q{question_nb+1}: {missing_stuff_col}</h2>
     <i>Number of responses: {df[missing_stuff_col].dropna().shape[0]}</i><br><br>
-        <div class="comments-box">
+        <div class="comments-box" {special_style}>
             {render_comments(df, missing_stuff_col, username_col, anonymize)}
         </div>
     </div> <!-- Close question-block -->
     <div class="question-block">
     <h2>Q{question_nb+2}: {concerns_col}</h2>
     <i>Number of responses: {df[concerns_col].dropna().shape[0]}</i><br><br>
-        <div class="comments-box">
+        <div class="comments-box" {special_style}>
             {render_comments(df, concerns_col, username_col, anonymize)}
         </div>
     """
