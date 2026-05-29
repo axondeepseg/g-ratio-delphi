@@ -136,7 +136,8 @@ details[open] summary {
 
 .expertise-legend {
     margin-bottom: 10px;
-    font-size: 0.95rem;
+    display: flex;
+    justify-content: right;
 }
 
 .legend-pill {
@@ -153,9 +154,9 @@ details[open] summary {
 
 .expertise-row {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     column-gap: 12px;
-    align-items: start;
+    align-items: center;
     margin-bottom: 10px;
 }
 
@@ -165,6 +166,7 @@ details[open] summary {
     color: #333;
     padding-right: 12px;
     flex-shrink: 0;
+    text-align: right;
 }
 
 .expertise-squares {
@@ -179,7 +181,6 @@ details[open] summary {
     width: 20px;
     height: 20px;
     border-radius: 4px;
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
 }
 
 .expertise-square.primary { background: var(--primary-color); }
