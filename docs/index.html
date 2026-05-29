@@ -40,13 +40,27 @@ img {
 
 /* Style for agreement badge */
 .top2-badge {
-    background: #27ae60;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-weight: bold;
-    display: inline-block;
+    display: inline-flex;
+    font-size: 0.8em;
+    border-radius: 5px;
+    overflow: hidden;
     margin-bottom: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+.top2-badge-label,
+.top2-badge-value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 4px;
+    color: white;
+}
+.top2-badge-label {
+    background: #5c5c5c;
+    min-width: 70px
+}
+.top2-badge-value {
+    min-width: 110px;
 }
 .top2-badge:hover {
     cursor: pointer;
@@ -58,8 +72,6 @@ img {
     padding: 15px;
     background: #d5dbdb;
     border-radius: 5px;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
 }
 .comment-item {
     background: #ffffff;
@@ -251,7 +263,10 @@ details[open] summary {
 <p>Transmission Electron Microscopy (TEM) is suitable to quantify the g-ratio.</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='19 agree, 0 disagree'>Agreement: 100.0%</div>
+                <div class="top2-badge" title='19 agree, 0 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (100%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 5.0%; background-color: #ffff94; color: #333333;" title="Neutral: 1 respondents">
             <span class="likert-segment-count">1</span>
@@ -279,7 +294,10 @@ details[open] summary {
 <p>Scanning Electron Microscopy (SEM) is suitable to quantify the g-ratio.</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='14 agree, 1 disagree'>Agreement: 93.3%</div>
+                <div class="top2-badge" title='14 agree, 1 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (93%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 5.0%; background-color: #ff9328; color: #333333;" title="Disagree: 1 respondents">
             <span class="likert-segment-count">1</span>
@@ -312,7 +330,10 @@ Lower axial resolution for internal measurements compared with TEM</div><div cla
 <p>Bright-Field (BF) Optical Microscopy is suitable to quantify the g-ratio.</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #dc3246;" title='2 agree, 14 disagree'>Agreement: 12.5%</div>
+                <div class="top2-badge" title='2 agree, 14 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #dc3246; color: #ffffff;">Disagree (12%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 42.10526315789473%; background-color: #dc3246; color: white;" title="Strongly disagree: 8 respondents">
             <span class="likert-segment-count">8</span>
@@ -350,7 +371,10 @@ High sensitivity to section thickness, staining variability, and illumination</d
 <p>Coherent Anti-Stokes Raman Scattering (CARS) microscopy is suitable to quantify the g-ratio.</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #95a5a6;" title='4 agree, 4 disagree'>Agreement: 50.0%</div>
+                <div class="top2-badge" title='4 agree, 4 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (50%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 22.22222222222222%; background-color: #ff9328; color: #333333;" title="Disagree: 4 respondents">
             <span class="likert-segment-count">4</span>
@@ -382,7 +406,10 @@ Results require calibration and validation against TEM</div><div class="comment-
 <img alt="Example of axon with myelin splitting/decompaction, with &gt;20% of the axon contour affected." src="images_r1/q5_20perc_splitting.png" width="60%"/>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='14 agree, 3 disagree'>Agreement: 82.4%</div>
+                <div class="top2-badge" title='14 agree, 3 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (82%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 15.0%; background-color: #ff9328; color: #333333;" title="Disagree: 3 respondents">
             <span class="likert-segment-count">3</span>
@@ -414,7 +441,10 @@ Results require calibration and validation against TEM</div><div class="comment-
 <p>In a given image, if &gt;20% of all axons have artefacts, the image should not be used for g-ratio quantification.</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #95a5a6;" title='9 agree, 9 disagree'>Agreement: 50.0%</div>
+                <div class="top2-badge" title='9 agree, 9 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (50%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 45.0%; background-color: #ff9328; color: #333333;" title="Disagree: 9 respondents">
             <span class="likert-segment-count">9</span>
@@ -447,7 +477,10 @@ Results require calibration and validation against TEM</div><div class="comment-
 <img alt="Visual guide" src="images_r1/q7_quality_guide_v4.png"/>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='18 agree, 1 disagree'>Agreement: 94.7%</div>
+                <div class="top2-badge" title='18 agree, 1 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (95%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 5.0%; background-color: #ff9328; color: #333333;" title="Disagree: 1 respondents">
             <span class="likert-segment-count">1</span>
@@ -479,7 +512,10 @@ Results require calibration and validation against TEM</div><div class="comment-
 <p>For MANUAL measurements, a line-based approach (tracing one or more diameter lines directly on the axon) should be the recommended method.</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #95a5a6;" title='9 agree, 4 disagree'>Agreement: 69.2%</div>
+                <div class="top2-badge" title='9 agree, 4 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (69%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 10.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
             <span class="likert-segment-count">2</span>
@@ -518,7 +554,10 @@ Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div
 <p>When using line-based measurements, a single measurement per axon and a single measurement per myelin is sufficient. </p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #95a5a6;" title='4 agree, 11 disagree'>Agreement: 26.7%</div>
+                <div class="top2-badge" title='4 agree, 11 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (27%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 40.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 8 respondents">
             <span class="likert-segment-count">8</span>
@@ -551,7 +590,10 @@ Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div
 <img alt="Illustration of line-based measurement axis for axon and fiber diameter." src="images_r1/q10_line_measurement_axis.png"/>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='12 agree, 3 disagree'>Agreement: 80.0%</div>
+                <div class="top2-badge" title='12 agree, 3 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (80%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 10.526315789473683%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
             <span class="likert-segment-count">2</span>
@@ -581,7 +623,10 @@ Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div
 <img alt="Illustration of single measurement of diameter" src="images_r1/q11_Linebased.png"/>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #95a5a6;" title='8 agree, 7 disagree'>Agreement: 53.3%</div>
+                <div class="top2-badge" title='8 agree, 7 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (53%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 10.526315789473683%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
             <span class="likert-segment-count">2</span>
@@ -618,7 +663,10 @@ Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div
 <img alt="Illustration of area-based measurement using equivalent circle diameter approximation." src="images_r1/q12_equivalent_circle.png" width="50%"/>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='15 agree, 3 disagree'>Agreement: 83.3%</div>
+                <div class="top2-badge" title='15 agree, 3 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (83%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 5.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 1 respondents">
             <span class="likert-segment-count">1</span>
@@ -657,7 +705,10 @@ Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div
 <img alt="Animation illustrating the equivalent circle diameter approximation for multiple axons." src="images_r1/q13_circle_approx.gif"/>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='15 agree, 3 disagree'>Agreement: 83.3%</div>
+                <div class="top2-badge" title='15 agree, 3 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (83%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 10.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
             <span class="likert-segment-count">2</span>
@@ -693,7 +744,10 @@ Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div
 <p>When using area-based measurements in conjunction with the equivalent circle diameter, it is necessary to exclude axons according to a predefined criterion for circularity (or roundness).</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #95a5a6;" title='11 agree, 4 disagree'>Agreement: 73.3%</div>
+                <div class="top2-badge" title='11 agree, 4 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (73%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 5.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 1 respondents">
             <span class="likert-segment-count">1</span>
@@ -732,7 +786,10 @@ Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div
 <img alt="Animation illustrating the ellipse-based diameter approximation for multiple axons." src="images_r1/q15_ellipse_approx.gif"/>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #95a5a6;" title='8 agree, 6 disagree'>Agreement: 57.1%</div>
+                <div class="top2-badge" title='8 agree, 6 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (57%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 10.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
             <span class="likert-segment-count">2</span>
@@ -775,7 +832,10 @@ Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div
 <img alt="Alternative illustration." src="images_r1/q16_periaxonal_space.png" width="50%"/>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #95a5a6;" title='9 agree, 6 disagree'>Agreement: 60.0%</div>
+                <div class="top2-badge" title='9 agree, 6 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (60%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 31.57894736842105%; background-color: #ff9328; color: #333333;" title="Disagree: 6 respondents">
             <span class="likert-segment-count">6</span>
@@ -812,7 +872,10 @@ This applies regardless of measurement modality or method.</div><div class="comm
 <p>Publications reporting g-ratio should include: the imaging modality and parameters, the effective pixel dimension, the measurement method used (line/contour/area), the diameter approximation (circle/ellipse), and any circularity or quality filters applied.</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='19 agree, 0 disagree'>Agreement: 100.0%</div>
+                <div class="top2-badge" title='19 agree, 0 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (100%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 10.526315789473683%; background-color: #bcff79; color: #333333;" title="Agree: 2 respondents">
             <span class="likert-segment-count">2</span>
@@ -836,7 +899,10 @@ This applies regardless of measurement modality or method.</div><div class="comm
 <p>Data and segmentation masks should be shared in a public repository (e.g., DANDI, OSF, Zenodo) alongside the publication, with well-documented quality control traceability (who performed measurements, inter-rater reliability metrics).</p>
 </section>
                 <br>
-                <div class="top2-badge" style="background-color: #27ae60;" title='16 agree, 0 disagree'>Agreement: 100.0%</div>
+                <div class="top2-badge" title='16 agree, 0 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (100%)</span>
+                </div>
                 <div class="likert-chart"><div class="likert-stacked-bar">
         <div class="likert-segment" style="width: 20.0%; background-color: #ffff94; color: #333333;" title="Neutral: 4 respondents">
             <span class="likert-segment-count">4</span>

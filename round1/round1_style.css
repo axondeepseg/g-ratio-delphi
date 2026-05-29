@@ -36,13 +36,27 @@ img {
 
 /* Style for agreement badge */
 .top2-badge {
-    background: #27ae60;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-weight: bold;
-    display: inline-block;
+    display: inline-flex;
+    font-size: 0.8em;
+    border-radius: 5px;
+    overflow: hidden;
     margin-bottom: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+.top2-badge-label,
+.top2-badge-value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 4px;
+    color: white;
+}
+.top2-badge-label {
+    background: #5c5c5c;
+    min-width: 70px
+}
+.top2-badge-value {
+    min-width: 100px;
 }
 .top2-badge:hover {
     cursor: pointer;
