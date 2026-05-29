@@ -1,0 +1,887 @@
+
+    <html>
+    <head>
+        <title>Survey Results Report</title>
+        <style>body {
+    font-family: sans-serif;
+    margin: 40px;
+    background-color: #f4f7f6;
+    color: #333; 
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+.question-block {
+    margin-bottom: 60px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 40px;
+}
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    font-family: Times New Roman, serif;
+    font-size: 3em;
+}
+h2 {
+    color: #2980b9;
+    font-size: 1.4em;
+}
+img {
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Style for agreement badge */
+.top2-badge {
+    background: #27ae60;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.top2-badge:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+/* Style for comments section */
+.comments-box {
+    padding: 15px;
+    background: #d5dbdb;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+.comment-item {
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-left: 4px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    font-style: normal;
+    font-size: 0.95em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s;
+}
+.comment-item:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+details {
+    margin-top: 20px;
+}
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #2980b9;
+    padding: 12px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    user-select: none;
+    transition: background 0.2s;
+}
+summary:hover {
+    background: #d5dbdb;
+}
+details[open] summary {
+    background: #d5dbdb; border-radius: 5px 5px 0 0;
+}
+
+/* Style for Likert charts */
+.likert-chart {
+    margin: 20px 0;
+}
+
+.likert-stacked-bar {
+    display: flex;
+    height: 40px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.likert-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    transition: opacity 0.2s ease;
+    position: relative;
+}
+
+.likert-segment:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.likert-segment-count {
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Style for expertise chart */
+:root {
+    --primary-color: #264653;
+    --secondary-color: #2a9d8f;
+}
+.expertise-chart {
+    margin: 20px 0;
+}
+
+.expertise-legend {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: right;
+}
+
+.legend-pill {
+    display: inline-block;
+    padding: 6px 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+}
+
+.legend-pill.primary { background: var(--primary-color); }
+.legend-pill.secondary { background: var(--secondary-color); }
+
+.expertise-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.expertise-label {
+    min-width: 180px;
+    font-size: 0.95rem;
+    color: #333;
+    padding-right: 12px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.expertise-squares {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    min-height: 32px;
+}
+
+.expertise-square {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.expertise-square.primary { background: var(--primary-color); }
+.expertise-square.secondary { background: var(--secondary-color); }</style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Delphi Survey Round 1 Report</h1>
+            <p> <i>Note: For every question, the "Agreement" badge represents the fraction of respondents who agreed, without considering neutral responses. </i></p>
+    
+    <div class="question-block">
+        <h2>Expertise Distribution</h2>
+        <div class="expertise-chart">
+        <div class="expertise-legend">
+            <span class="legend-pill primary">Primary Expertise</span>
+            <span class="legend-pill secondary">Secondary Expertise</span>
+        </div>
+    
+        <div class="expertise-row">
+            <div class="expertise-label">Histology & specimen preparation</div>
+            <div class="expertise-squares">
+                
+                <div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        
+        <div class="expertise-row">
+            <div class="expertise-label">Image analysis & computational methods</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div><div class="expertise-square primary" ></div>
+                <div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        
+        <div class="expertise-row">
+            <div class="expertise-label">Microscopy / imaging</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div>
+                <div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        
+        <div class="expertise-row">
+            <div class="expertise-label">Myelin biology</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div>
+                <div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        
+        <div class="expertise-row">
+            <div class="expertise-label">Neuropathology / disease models</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div>
+                <div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+            <div class="question-block">
+                <section id="q1">
+<h2>Q1</h2>
+<p>Transmission Electron Microscopy (TEM) is suitable to quantify the g-ratio.</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='19 agree, 0 disagree'>Agreement: 100.0%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 5.0%; background-color: #ffff94; color: #333333;" title="Neutral: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 10.0%; background-color: #bcff79; color: #333333;" title="Agree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 85.0%; background-color: #28aa00; color: white;" title="Strongly agree: 17 respondents">
+            <span class="likert-segment-count">17</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (7)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">The 2D nature of TEM and the impossibility to get the perfect cross-section of the axons need to be considered as a potential deviation in the de calculation of g-ratio. </div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">Downside: Low coverage, hard to create a mosaic</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">the original Donaldson & hoke studies used light microscopy. they were quite good because of their awareness of the Rayleigh criterion and didn't measure fibers less that ~4um diameter.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">TEM is particularly appropriate because it provides high contrast between axoplasm, myelin, and extracellular space after heavy‑metal staining, these allow accurate quantification of both axon diameter and myelin sheath thickness.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">the best method currently</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">Given excellent sample preservation, lack of major dehydration artifacts, high-quality images, etc, of course</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">It is particularly difficult to determine the g-ratio of small axons, regardless of the technique used.</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q2">
+<h2>Q2</h2>
+<p>Scanning Electron Microscopy (SEM) is suitable to quantify the g-ratio.</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='14 agree, 1 disagree'>Agreement: 93.3%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 5.0%; background-color: #ff9328; color: #333333;" title="Disagree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 25.0%; background-color: #ffff94; color: #333333;" title="Neutral: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 45.0%; background-color: #bcff79; color: #333333;" title="Agree: 9 respondents">
+            <span class="likert-segment-count">9</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 25.0%; background-color: #28aa00; color: white;" title="Strongly agree: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (9)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">Conventional SEM acquisition (not the 3D modalities) can suffer of the uncertainty on the g-ration calculation (no perfect cross-section) as TEM. </div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">Better coverage than TEM, but usually poorer contrast</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">I have only touched on this technique and found the resolution wanting. but with longer scan times the resolution and image detail may improve sufficiently.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">When SEM is used for imaging of tissue sections, this is possible. It also provides more context to the quantified axons. Larger imaged areas also reduce the bias against large axons which is an issue in TEM. However, the resolution (pixel size) is lower than in TEM.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">Insufficient contrast between axon and individual myelin lamellae
+Lower axial resolution for internal measurements compared with TEM</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">works but expertise will not be widely available</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">this is dependent on the pixel resolution (same goes for TEM)</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">Given excellent sample preservation, lack of major dehydration artifacts, high-quality images, etc, of course</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">see previous answer</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q3">
+<h2>Q3</h2>
+<p>Bright-Field (BF) Optical Microscopy is suitable to quantify the g-ratio.</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #dc3246;" title='2 agree, 14 disagree'>Agreement: 12.5%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 42.10526315789473%; background-color: #dc3246; color: white;" title="Strongly disagree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 31.57894736842105%; background-color: #ff9328; color: #333333;" title="Disagree: 6 respondents">
+            <span class="likert-segment-count">6</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 15.789473684210526%; background-color: #ffff94; color: #333333;" title="Neutral: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 5.263157894736842%; background-color: #bcff79; color: #333333;" title="Agree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 5.263157894736842%; background-color: #28aa00; color: white;" title="Strongly agree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (12)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_1">depends on the size of axons</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">BF does not offer enough resolution except for biggest axons. Super-resolution microscopy (simple confocal airyscan and advanced methods, such as STED) could provide enough resolution and even 3D, potentially useful for the g-ratio calculation. On the other hand, the specificity of the markers plays a role of the landmarks to do such calculation. </div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">I have no experience with this modality</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">except for measuring fiber diameters >4 um. again, the Rayleigh criterion.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">This might be possible (and is done) with the important limitation that this is only applicable to PNS samples with large axons. Smaller axons escape the analysis, and the results might not be comparable to a careful TEM analysis.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">Poor contrast between axon and compact myelin in most BF stains
+Inability to resolve individual myelin boundaries or thin myelin sheaths
+High sensitivity to section thickness, staining variability, and illumination</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_13">If one is working with exceptionally large-diameter peripheral nerve fibers (e.g., alpha motor neurons), the myelin sheath may be thick enough to be visualized at high power with an oil-immersion objective. However, even in these instances, the resulting measurements should be considered 'estimates' rather than precise quantifications due to the resolution limits.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_14">it has limitations for standardized g-ratio measurement. It may be suitable for approximate morphometric assessment, but not for rigorous single-fiber ultrastructural g-ratio quantification.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">too imprecise</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">Assuming conventional light microscopy and not super-resolution, diffraction limits resolution to more than an order of magnitude larger than a single myelin wrap. No way to resolve that</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">Spatial variation in staining and limited spatial resolution can both be problematic.</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">With current Bright-Field optical microscopy it is not yet possible</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q4">
+<h2>Q4</h2>
+<p>Coherent Anti-Stokes Raman Scattering (CARS) microscopy is suitable to quantify the g-ratio.</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #95a5a6;" title='4 agree, 4 disagree'>Agreement: 50.0%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 22.22222222222222%; background-color: #ff9328; color: #333333;" title="Disagree: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 55.55555555555556%; background-color: #ffff94; color: #333333;" title="Neutral: 10 respondents">
+            <span class="likert-segment-count">10</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 22.22222222222222%; background-color: #bcff79; color: #333333;" title="Agree: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (11)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_1">depends on the size of axons</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">It is 3D. Still resolution and contrast (axon membrane and myelin structure) can be a challenge for the g-ratio calculation. </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">Limited experience, in my opinion inferior to EM</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">no experience with this technique. if it has sufficient resolution (i.e. ~3nm/pixel so 3-4 pixels per myelin wrap) regression modeling of a plot of axon diameter vs fiber diameter will have a small negative y intercept. </div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">I am not familiar with this technique.</div><div class="comment-item" style="border: 4px solid #cccccc; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_9">I don't have the necessary training in the technique to have an opinion.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">Axon inner boundary is not directly visualized (axon is weakly CARS‑active)
+Spatial resolution (~300 nm laterally) is insufficient to resolve thin myelin accurately
+g‑ratio values are indirect and model‑dependent
+Results require calibration and validation against TEM</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_13">Thin axons predominate in the mammalian CNS, with the majority of myelinated fibers measuring between 0.1 µm and 1 µm, and some as small as 0.2 µm. Because these dimensions are near or below the optical resolution limit, CARS cannot provide the precision required for these fibers, making electron microscopy the only truly reliable method for these populations.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">not an authority on this technique although have collaborated with someone with expertise. Will defer to others has the advantage of being able to assess live samples; probably better when comparing g ratios within the same sample set - comparing g ratios by this method to those determined by TEM likely to be challenging</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">I do not have sufficient knowledge of CARS to provide an educated response but a quick PubMed search indicates that CARS does not provide sufficient resolution</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">For larger axons, yes. But not for the smaller ones.  </div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q5">
+<h2>Q5</h2>
+<p>If myelin splitting/decompaction affects &gt; 20% of an axon's contour, the axon should be excluded from the g-ratio dataset.</p>
+<img alt="Example of axon with myelin splitting/decompaction, with &gt;20% of the axon contour affected." src="images_r1/q5_20perc_splitting.png" width="60%"/>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='14 agree, 3 disagree'>Agreement: 82.4%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 15.0%; background-color: #ff9328; color: #333333;" title="Disagree: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 15.0%; background-color: #ffff94; color: #333333;" title="Neutral: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 35.0%; background-color: #bcff79; color: #333333;" title="Agree: 7 respondents">
+            <span class="likert-segment-count">7</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 35.0%; background-color: #28aa00; color: white;" title="Strongly agree: 7 respondents">
+            <span class="likert-segment-count">7</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (8)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">I would use the example on the left, but I would exclude the one on the right. Still the one of the right is more than 20% but I can see compared myelin to perform the calculation. </div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">both images are extensively distorted. on the left the axon appears to have a large periaxonal space and the myelin on the left is indistinct. mitochondria is poorly preserved and cannot determine microtubule or neurofilament orientation.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_8">in many instances there's sufficient compacted myelin to measure</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_9">Consider 20% of the myelin circunference with decompaction is not enough to assess the total myelin area affected by the decompaction. </div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">This has hi likelihood of giving spurious results due to potential for poorly fixed samples contributing to and overstating the true g ratio i.e., myelin thickness. However, this may be a feature of myelin pathology and so capturing/reporting the % of fibers that show myelin splitting on well fixed samples is a useful complement to the analysis that could be reported </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">There are multiple aspects to be considered. I would be hesitant to use either of these myelinated axons for g ratio calculations. "Fuzzy" myelin sheaths and the lack of a clearly defined axon boundary (image 1) and clumping cytoskeleton in image 2 make it very difficult to assure quantitative accuracy. Both images have significant fixation artifact beyond myelin splitting/decomposition. I think myelin integrity is only one of the criteria that must to considered.  I realize that this makes it difficult because the basis for inclusion/exclusion becomes very subjective.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">Any analysis pipeline needs to take this into account. If manual, you must avoid these regions to measure the myelin thickness. If automatic/machine learning etc, models need to be trained to make measurements of myelin where they are least disturbed. It is "very easy" for mylin to become decompacted as part of sample prep, but it is physically impossible to make myelin any more compact than it already is, so we should always measure myelin where it is thinnest.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">In such a case, I would prefer to use an area-based approach (e.g., circular equivalent or ellipse fitting) to estimate the g-ratio.</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q6">
+<h2>Q6</h2>
+<p>In a given image, if &gt;20% of all axons have artefacts, the image should not be used for g-ratio quantification.</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #95a5a6;" title='9 agree, 9 disagree'>Agreement: 50.0%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 45.0%; background-color: #ff9328; color: #333333;" title="Disagree: 9 respondents">
+            <span class="likert-segment-count">9</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 10.0%; background-color: #ffff94; color: #333333;" title="Neutral: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 10.0%; background-color: #bcff79; color: #333333;" title="Agree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 35.0%; background-color: #28aa00; color: white;" title="Strongly agree: 7 respondents">
+            <span class="likert-segment-count">7</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (11)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_1">threshold to be adjusted with type of tissue (eg optic nerve vs. WM)</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">depends on the axons: ill consider how the axons look like. </div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">This is difficult to agree on, as one man's artefact is another man's signal. I am sure somebody can find 20% artefacts on any image</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">subareas are often preserved while adjacent areas have artifact. needs evaluation area by area.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_9">A more appropriate approach than disregarding the image would be to include a comment specifying the percentage of axons excluded due to artefacts from the analysis, along with a discussion of the filters considered for exclusion.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">It is okay if it is still possible to measure a representative amount of axons of all calibers.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">When artefacts affect a substantial fraction of axons, measurements become biased, non‑representative, and statistically unreliable.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">Same issue as before. For example,  altered axon size is a feature of fixation issues or true axon/myelin pathology but including these may artifactually overstate the g ratio. Better to exclude this pool and just report the subpopulation showing these defects. I can provide example/ images of shrunken axons within a normal size myelin sheath to illustrate</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">Same answer as prior question. Plus a thought question: if 20% axons have artefacts, is that randomly distributed across "axon types" or specifically affecting one type of axon/myelin profile? Since there is a chance of the latter, than it makes sense to try to score as many axons as possible from each sample so you do not selectively ignore a population of axons that might be selectively affected.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">In human brain tissue this happens often and therefore it is required to estimate the g-ratio also there.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">It is okay if it is still possible to measure a representative amount of axons of all calibers.</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q7">
+<h2>Q7</h2>
+<p>If axons are omitted from g-ratio analysis due to fixation artefacts (see image), publications should include a visual guide illustrating acceptable vs. unacceptable axon quality. (<i>note: if axons have abnormalities due to the disease models but are not excluded, they would go in the accepted column.</i>)</p>
+<img alt="Visual guide" src="images_r1/q7_quality_guide_v4.png"/>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='18 agree, 1 disagree'>Agreement: 94.7%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 5.0%; background-color: #ff9328; color: #333333;" title="Disagree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 5.0%; background-color: #ffff94; color: #333333;" title="Neutral: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 40.0%; background-color: #bcff79; color: #333333;" title="Agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 50.0%; background-color: #28aa00; color: white;" title="Strongly agree: 10 respondents">
+            <span class="likert-segment-count">10</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (7)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">qualitative description will be very difficult</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">This would make the g-ratio analysis more transparent, indeed. It would also be useful to instruct newcomers to the field and help establishing a quality standard.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_8">This is a novel idea and could be helpful</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">If myelin is thick/thin due to disease, that is of course what a g ratio is trying to capture. However, in pathologies that primarily affect axon health that result in hypertrophic axons or shrunken axons, a standard g ratios measurement could be misleading suggesting a primary defect in myelin thickness so that concern needs to be flagged in the analysis.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">I think providing a guide indicating what was included versus excluded could be helpful but I am not sure how feasible this would be.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">Great idea: "Criteria for exclusion" should be clearly described, and having a visual depiction of this would be maximally useful.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_18">examples of fibres that are included are desirable but there are so many reasons to reject fibers that I doubt their inclusion is necessary. In our preparations with different levels of hypomyelination, we encountered many myelin features that we considered to be fixation artifacts, and we therefore adopted strict thresholds on the extent of artifacts that would be acceptable. Two observers considered each fiber and estimated if apparent axon – myelin sheath contact extended >90% of the myelin circumference. Those with separation over a greater than 10% of the circumference were rejected. Unfortunately, this approach obscures any real difference in the areas of inner tongue that might exist in fibers with different degrees of hypomyelination. We also rejected fibers in which inter-lamellar gaps (splits) in the sheath itself had potential to influence myelin volume in a meaningful way. Typically, that meant that thin splits over short distances were tolerated. The AxonDeepSeg results for the fibers that passed this quality control step were then graphed.</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q8">
+<h2>Q8</h2>
+<p>For MANUAL measurements, a line-based approach (tracing one or more diameter lines directly on the axon) should be the recommended method.</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #95a5a6;" title='9 agree, 4 disagree'>Agreement: 69.2%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 10.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 10.0%; background-color: #ff9328; color: #333333;" title="Disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 35.0%; background-color: #ffff94; color: #333333;" title="Neutral: 7 respondents">
+            <span class="likert-segment-count">7</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 35.0%; background-color: #bcff79; color: #333333;" title="Agree: 7 respondents">
+            <span class="likert-segment-count">7</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 10.0%; background-color: #28aa00; color: white;" title="Strongly agree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (12)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_2">Line based approach allows comparison to large % of existing literature. </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">more than one line. </div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">I have no experience with this</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">no experience with this approach. needs a side by side comparison of different approaches</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">I am not sure about the applicability. How can shapes represented that deviate very much from a circle? Via min-max lines to calculate an average?</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">I never compared the line and area methods. I would like to base this on Mathieu’s simulation data that should indicate which method is more accurate.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">To ensure validity, the recommendation should include the following conditions:
+Axons must be reasonably circular in cross‑section
+Sections must be approximately perpendicular to the axon axis
+Use ≥2 orthogonal diameter lines (or averaged radial lines) when possible</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">too much variability to use a line based approach; potentially measuring multiple lines could ameliorate this a bit but much better to use a circumference or area based measurements </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">I am not opposed to other approaches but in my experience manual measurements have worked better for me. </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">When axons are all perfect circles due to great preservation and perfectly perpendicular sectioning, most approaches would be OK (eg the area/perimeter measurements you have used in the past). HOwever, when samples deviate from this idea, line-based measurements are more accurate. (Because you can use a line to measure a myelin ring at its thinnest/least artifactually perturbed, use a line to measure what is most likely to be the true diameter of axon)</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">I prefer the area-based methods because it is more stable against artefacts.</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">We have never compared the line and area methods. I would like to answer this based  on good simulation data that should better indicate if linear method is usable. However as per my training and experience it I would say it is not as accurate.</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q9">
+<h2>Q9</h2>
+<p>When using line-based measurements, a single measurement per axon and a single measurement per myelin is sufficient. </p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #95a5a6;" title='4 agree, 11 disagree'>Agreement: 26.7%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 40.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 15.0%; background-color: #ff9328; color: #333333;" title="Disagree: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 25.0%; background-color: #ffff94; color: #333333;" title="Neutral: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 20.0%; background-color: #bcff79; color: #333333;" title="Agree: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (8)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_2">At least 2 measurements, perpendicular</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">at least, two perpendicular lines. Ideally as many as possible.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">I have no experience with this</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">no experience. </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_9">Considering the labor-intensive nature of manual measurements, sounds more feasible to avoid poor choices of line-base then do multiple points measurements.</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_14">Most fibers are not ideal circles. A single axon diameter measurement and a single myelin thickness measurement, or even two opposite measurements, may not represent the whole fiber section.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">We use 2 axon diameters and 2 myelin thickness measurements. More would be better but this is a compromise between accuracy and time management.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">could be even more accurate to average multiple myelin thickness measurements from same sheath, at multiple well-preserved regions. But in reality I would be this would only be marginally more accurate than a single measurement</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q10">
+<h2>Q10</h2>
+<p>When using line-based measurements, the fiber diameter (or myelin thickness) should be measured along the same axis as the axon diameter line measurement.</p>
+<img alt="Illustration of line-based measurement axis for axon and fiber diameter." src="images_r1/q10_line_measurement_axis.png"/>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='12 agree, 3 disagree'>Agreement: 80.0%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 10.526315789473683%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 5.263157894736842%; background-color: #ff9328; color: #333333;" title="Disagree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 21.052631578947366%; background-color: #ffff94; color: #333333;" title="Neutral: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 21.052631578947366%; background-color: #bcff79; color: #333333;" title="Agree: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 42.10526315789473%; background-color: #28aa00; color: white;" title="Strongly agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        </div></div>
+            </div>
+            <div class="question-block">
+                <section id="q11">
+<h2>Q11</h2>
+<p>If using single line-based measurements (i.e., a single measurement per axon), axon diameter in non-circular axons should be measured along the shortest axis.</p>
+<img alt="Illustration of single measurement of diameter" src="images_r1/q11_Linebased.png"/>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #95a5a6;" title='8 agree, 7 disagree'>Agreement: 53.3%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 10.526315789473683%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 26.31578947368421%; background-color: #ff9328; color: #333333;" title="Disagree: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 21.052631578947366%; background-color: #ffff94; color: #333333;" title="Neutral: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 15.789473684210526%; background-color: #bcff79; color: #333333;" title="Agree: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 26.31578947368421%; background-color: #28aa00; color: white;" title="Strongly agree: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (12)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">I see that geometrically this might be correct when the axon is cylindrical but this might not be always the case. One line is not enough, two lines might be not correct. We need 3D.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">non circular axons not measured until comparison between circular and non circular fibers tested</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">This is based on the assumption that the axon is running oblique in the section. If this is wrong, the diameter is underestimated.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_10">Disagree - only if it's obliquely cut. for equal myelin thickness, this biases the g-ratio and axon caliber of the dataset</div><div class="comment-item" style="border: 4px solid #cccccc; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">I never used that method, so I dont feel confident to answer that.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">The minor axis provides the most conservative and geometrically defensible approximation of the true axonal diameter when only one measurement is taken.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_13">If every non-circular axon in a study is measured only along its shortest diameter, the entire dataset will be skewed.</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">strongly opposed to single measurements particularly with non-circular profiles. would never use them myself, would consider such a measurement totally unreliable</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">We draw 2 lines --one is the shortest axis and the other is the longest axis. We assumed that this gives a better representation of the axon caliber but am very open to hear others' comments on this.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">If anyone disagrees with this, I will buy them a knife and a salami. -Brad</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">I think it depends on the question that you want to answer. You might underestimate the true axon diameter if you use the short axis. But, you definitely will over estimate it when you use the large axis. Also the amount of fibres within the cutting plane are relevant here.</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">.  Should do not be use line measurements no..</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q12">
+<h2>Q12</h2>
+<p>For AUTOMATED/semi-automated pipelines, area-based measurements (derived from segmentation masks) should be the recommended method.</p>
+<img alt="Illustration of area-based measurement using equivalent circle diameter approximation." src="images_r1/q12_equivalent_circle.png" width="50%"/>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='15 agree, 3 disagree'>Agreement: 83.3%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 5.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 10.0%; background-color: #ff9328; color: #333333;" title="Disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 10.0%; background-color: #ffff94; color: #333333;" title="Neutral: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 35.0%; background-color: #bcff79; color: #333333;" title="Agree: 7 respondents">
+            <span class="likert-segment-count">7</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 40.0%; background-color: #28aa00; color: white;" title="Strongly agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (10)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">depends what you want to measure (sorry maybe I dont understand the question here)</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">This is most consistent with the way MRI measures it</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">subject to sufficient resolution constraints</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_10">Agree, with the caveat that the myelin sheets must not be split. In cases where they are, the myelin estimates will be biased; an automated line-based approach (e.g. measuring a radial g-ratio through the center-of-mass on the segmentations via an automated script) while avoiding angles that touch these regions may be more accurate in my opinion</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">If segmentation quality is poor, area‑based measurements will systematically propagate errors, so segmentation validation is critical.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">agree and is how we have done this over the years. I would add that IMO, a contour/circumference measurement would be equivalent and could be used in automated methods equally well</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">In my experience with area based measurements, it is difficult to eliminate myelin splitting, periaxonal space, and inner and outer tongue. </div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">As above, this only works if axons are all circular</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_18">We understand that quite massive tissue shrinkage takes place with routine processing through to embedding in Epon. We assumed that during dehydration, aqueous domains would shrink more than lipid domains and for CNS fibers, we predicted that axons would shrink while compact myelin would be relatively spared. Consequently, we considered myelin profiles in fiber cross sections would be more reflective of the native fiber state leading us to adopt measurements based on myelin circumference for estimating axon-myelin relationships. </div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">recommended for automated AND manual analysis!</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q13">
+<h2>Q13</h2>
+<p>When using area-based measurements, an equivalent circle diameter to the segmented area should be the default axon diameter approximation.</p>
+<img alt="Illustration of equivalent circle diameter approximation for a single axon." src="images_r1/q13_equivalent_circle_approx.png" width="50%"/>
+<p><i>Illustration of the equivalent circle diameter approximation for multiple axons.</i></p>
+<img alt="Animation illustrating the equivalent circle diameter approximation for multiple axons." src="images_r1/q13_circle_approx.gif"/>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='15 agree, 3 disagree'>Agreement: 83.3%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 10.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 5.0%; background-color: #ff9328; color: #333333;" title="Disagree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 10.0%; background-color: #ffff94; color: #333333;" title="Neutral: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 50.0%; background-color: #bcff79; color: #333333;" title="Agree: 10 respondents">
+            <span class="likert-segment-count">10</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 25.0%; background-color: #28aa00; color: white;" title="Strongly agree: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (11)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_2">A measurement of average roundness could be provided when this is used</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">This will work only for massive simplification.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">This makes sense to me, but I am not a myelin expert</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">comparison with elliptical measurements</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_9">In elongated axons, particularly those resulting from non-perpendicular sectioning, the measured cross-sectional area may be artificially enlarged, leading to errors in the estimated axon diameter. Although this effect may be less pronounced in g-ratio calculations, due to the ratio between areas, it nonetheless remains a relevant concern that should be acknowledged.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_13">If an axon is severely flattened or damaged by pathology, treating it as a circle may mask important morphological changes. </div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">I agree but there must be a method (e.g., AI based) that is incorporated into the automated methods to estimate individual myelin sheath thickness/area when many myelinated axons are bundled together with no clear separation so the automated method does not overstate myelin thickness </div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">This would work fine if all the axons were sectioned perpendicular to axon. In this case, the circle approximation likely accounts nicely for dehydration-induced distortion of axon from its normally circular profile. However, this does not work when you have an axon that you cut obliquely: this requires an elipse fitting</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_18">see previous answer</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">The equivalent circle diameter is the closest estimate to the true diameter, if the amount of fibres in the cutting plane are negligible. </div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20"> simulation data would be helpful here to refine this approach</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q14">
+<h2>Q14</h2>
+<p>When using area-based measurements in conjunction with the equivalent circle diameter, it is necessary to exclude axons according to a predefined criterion for circularity (or roundness).</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #95a5a6;" title='11 agree, 4 disagree'>Agreement: 73.3%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 5.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 15.0%; background-color: #ff9328; color: #333333;" title="Disagree: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 25.0%; background-color: #ffff94; color: #333333;" title="Neutral: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 40.0%; background-color: #bcff79; color: #333333;" title="Agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 15.0%; background-color: #28aa00; color: white;" title="Strongly agree: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (9)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_2">Criteria at user discretion but clearly stated</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">maybe I dont understand this question. </div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">I have examined this issue in a little detail and have not found a difference in g ratios from round and ellipsoid profiles. but this needs further testing.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">There will be always some error no matter which method is applied. I would rather include all axons than excluding ones and introducing another bias.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">I would only exclude obviously longitudinally cut axons.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">We have developed and recently reported an automated method that allows us to filter which fibers are included for measurement based on their circularity. The calculated g ratios for the identical TEM samples of optic nerves differed significantly depending on the circularity cut-off. Thus, cut offs of 0.6, 0.5 and 0.4 on optic nerves had corresponding g-ratios of 0.711697, 0.727181, 0.73298 respectively. This real world example highlights the variability seens with differing circularity. Where that cutoff should be can be discussed, we and i think others use 0.6</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">Isn't this the advantage of using area based measurements? When using manual measurements on non-round axons, it is very difficult to determine where the diameters should be drawn. This subjectivity is removed with the area based approach.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">Not sure I understand fully what "roundness" would encompass here. An axon that was sectioned perfectly perpendicular that has dehydration artifact will be a "crumpled circle" , while an obliquely sectioned axon will be more of an ellipse. Both cases deviate from circularity/roundness, but should be treated differently. So I think you need to more clearly define what circularity means here.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">We  would only exclude obviously longitudinally cut axons.</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q15">
+<h2>Q15</h2>
+<p>When using area-based measurements, the minor axis of an ellipse fitted to the segmented area should be the default axon diameter approximation, to account for non-orthogonal sections and irregular shapes.</p>
+<img alt="Illustration of ellipse-based diameter approximation for a single axon." src="images_r1/q15_ellipse_approx.png"/>
+<p><i>Illustration of the ellipse-based diameter approximation for multiple axons.</i></p>
+<img alt="Animation illustrating the ellipse-based diameter approximation for multiple axons." src="images_r1/q15_ellipse_approx.gif"/>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #95a5a6;" title='8 agree, 6 disagree'>Agreement: 57.1%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 10.0%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 20.0%; background-color: #ff9328; color: #333333;" title="Disagree: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 30.0%; background-color: #ffff94; color: #333333;" title="Neutral: 6 respondents">
+            <span class="likert-segment-count">6</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 25.0%; background-color: #bcff79; color: #333333;" title="Agree: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 15.0%; background-color: #28aa00; color: white;" title="Strongly agree: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (11)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_2">Intuitively it seems more correct; how this affects final g ratio calculations is not clear. </div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">This could be the case, but it is might be the natural shape of the axon. 3D is needed. </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">Does this exclude the circular definition above? Again, it makes sense to me, but I am not a myelin expert</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">the prominence of overlapping profiles for juxtaposed fibers suggests that measurements in tightly packed tracts like optic nerve and spinal tracts would not be very accurate. this needs testing</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">This sounds very reasonable, however, I have no experience with this.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_9">The best-fitting ellipse is influenced by the geometry of the fiber. Consequently, the ellipse that best represents the fiber may not accurately represent the axon, necessitating a careful decision on the most appropriate approach for diameter estimation.</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_10">Disagree - biases axon caliber and g-ratio measures</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">I disagree if i understand this correctly. The same axon that is compressed in one region might have a different axon diameter in an adjacent region that is not compressed for ex.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">I recommend using the equivalent circle.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">It depends on the investigation at hand. Your estimates are definitely more stable. But, you will systematically underestimate the axon radii. </div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">Because an ellipse contains two radii, the minor axis cannot be determined from area alone. Multiple ellipse geometries can yield the same area, requiring additional assumptions for diameter estimation</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q16">
+<h2>Q16</h2>
+<p>
+        In the presence of enlarged inner tongue, axon diameter should be measured within the axon, and fiber diameter should exclude the area between the axolemma and the compact myelin.<br/>
+        For example, with <b>line-based measurements</b>, the axon should be measured inside the red contour, and the myelin thickness inside the compact myelin. With <b>area-based measurements</b>, the area between red and yellow contours should be removed from the total fiber area.<br/>
+<i>Illustration below adapted from Figure 4, “White matter integrity in mice requires continuous myelin synthesis at the inner tongue” by Meschkat et al., Nature Communications (2022), used under CC BY 4.0 / Cropped from original.</i>
+</p>
+<img alt="Illustration of measurement approach in the presence of enlarged inner tongue, adapted from Meschkat et al., Nature Communications (2022)." src="images_r1/q16_inner_tongue.png"/>
+<p><i>Other example</i></p>
+<img alt="Alternative illustration." src="images_r1/q16_periaxonal_space.png" width="50%"/>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #95a5a6;" title='9 agree, 6 disagree'>Agreement: 60.0%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 31.57894736842105%; background-color: #ff9328; color: #333333;" title="Disagree: 6 respondents">
+            <span class="likert-segment-count">6</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 21.052631578947366%; background-color: #ffff94; color: #333333;" title="Neutral: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 21.052631578947366%; background-color: #bcff79; color: #333333;" title="Agree: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 26.31578947368421%; background-color: #28aa00; color: white;" title="Strongly agree: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (14)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_2">Current flow near axon surfaces that are not in direct contact with inner tongue of myelin will not be subjected to same capacitance and resistance as ones that are in direct contact. Therefore including that distance does not seem appropriate</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">based on the description of g-ratio, I agree. I can see that some calculations will require the inclusion of area between red and yellow contours might be needed for the estimation. </div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">This is the first time I am hearing about this, it makes sense but I am not a myelin expert</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">the top panel is an example of abnormal biology that should not be included in g ratio estimates. it is a very different form and the functional consequences are unlikely quantifiable. it should be included as a separate measure similarly to changes in the proportion of unmyelinated fibers in disease states. rather than an expanded inner tongue this profile may arise from a failed filopodia to lamellipodia transition. occurs in many conditions. the lower panel is normal biology and inclusion/exclusion likely has minimal impact on g ratio.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_9">Cases such as those illustrated in the first figure, where the yellow and red lines differ substantially, should be explicitly described and the prevalence reported in the manuscript. In contrast, for cases similar to the second figure, it is not necessary to treat the yellow and red lines as distinct.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">The g-ratio is defined by axon diameter/fibre diameter, so I would always measure full diameters from axon area and fibre area including the inner tongue to the myelin. However, in many cases (development, mutants) there is a good argument to use “adjusted g-ratio” excluding the inner tongue, but than it should be called “adjusted g-ratio”!</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">When an enlarged inner tongue is present:
+Axon diameter must be measured within the axolemma
+Fiber diameter must include only compact myelin
+The periaxonal space / inner tongue must be excluded
+
+This applies regardless of measurement modality or method.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_13"> The g ratio should represent the total physical footprint of the fiber</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">again, if there are frequent instances where the inner contour of the myelin sheath and the axon diameter differ significantly, that is worthy of being noted and reported</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">I agree but it is rarely feasible to trace the inner tongue completely around the axon. This may not be feasible.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">This is great for g-ratio, but instances like this should also get flagged. There are mutants that cause inner tongue swelling, and we would like to be able to catch these phenotypes in automated analysis. This would be as a separate metric, eg. "inner tongue swelling degree" separate from g-ratio</div><div class="comment-item" style="border: 4px solid #cccccc; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_18">Hard to imagine that a g-ratio analysis of example 1 would be meaningful. I think a common strategy to deal with the inner tongue is critical but I don't have a good suggestion.</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">I disagree, as I would argue that axon diameter and g-ratio measurements are performed to enable comparison with MRI. Assuming that the same postmortem tissue has also been measured with MRI, I would expect all the depicted intracellular space to be effectively experienced as intracellular space by the water molecules, independent of where the membrain of the axon is located within the myelin sheath.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">The g-ratio is defined by axon diameter/fibre diameter, so I would always measure full diameters from axon area and fibre area including the inner tongue to the myelin. However, in many cases there is a good argument to use “adjusted g-ratio” excluding the inner tongue, but than it should be called “adjusted g-ratio’.  Important in development and in disease, and needs to be clearly defined in methods. </div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q17">
+<h2>Q17</h2>
+<p>Publications reporting g-ratio should include: the imaging modality and parameters, the effective pixel dimension, the measurement method used (line/contour/area), the diameter approximation (circle/ellipse), and any circularity or quality filters applied.</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='19 agree, 0 disagree'>Agreement: 100.0%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 10.526315789473683%; background-color: #bcff79; color: #333333;" title="Agree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 89.47368421052632%; background-color: #28aa00; color: white;" title="Strongly agree: 17 respondents">
+            <span class="likert-segment-count">17</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (5)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">and also report potential artefacts and limitations.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">in many studies g ratios are a black box. because of the "gold standard" attribute they should be clearly described. often they are used to bolster the results of other data that are semi-quantitative</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">For manual tracings it is also useful to add how axons were chosen “randomly”.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_18">Beyond describing what was measured, we find that scatter graphs often are difficult to assess critically due to the density of overlapping data from different experimental groups. To make the g-ratio data more visually accessible, we binned axon calibers and displayed the average g-ratio +/- SEM for each bin; an approach that resulted in simple curves that clearly revealed differences between the variably hypomyelinated lines, along with an appreciation of variability. </div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">For manual tracings it is useful to add how axons were chosen “randomly”.</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q18">
+<h2>Q18</h2>
+<p>Data and segmentation masks should be shared in a public repository (e.g., DANDI, OSF, Zenodo) alongside the publication, with well-documented quality control traceability (who performed measurements, inter-rater reliability metrics).</p>
+</section>
+                <br>
+                <div class="top2-badge" style="background-color: #27ae60;" title='16 agree, 0 disagree'>Agreement: 100.0%</div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 20.0%; background-color: #ffff94; color: #333333;" title="Neutral: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 40.0%; background-color: #bcff79; color: #333333;" title="Agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 40.0%; background-color: #28aa00; color: white;" title="Strongly agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        </div></div>
+            </div>
+    <div class="question-block">
+    <h2>Q19: Are there any important methodological considerations for g-ratio quantification that are missing from this survey?</h2>
+    <i>Number of responses: 12</i><br><br>
+        <div class="comments-box">
+            <div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_2">Question of oblique sectioning and / or orientation of axonal filaments (how to define; whether to use) should be included. </div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">3D methods. </div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_8">Nothing I can think of at present</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_10">I'm of the belief that there are two main groups of researchers interested in the g-ratio value. One group are interested in the g-ratio as an optimal ratio that nature found to optimize conductivity in axons,  the same way other conducting cables & surrounding insulator have an optimal ratio. But a second group appears to be mostly interested in using the g-ratio as a unitless/dimensionless measure that quantifies the myelin thickness. Meaning, they are using the g-ratio as a substitute for a myelin thickness measurement for different disease models, regardless of axon caliber.
+
+My concern is that some of the technical choices in measuring the g-ratio may impact the interpretation or physical reality differently. For example, one could image taking a circular axon, and stretching it infinitely long along one axis while retaining the overall axon and fiber area. In this case, the area-based g-ratio stays the same, but 1) the myelin thickness would clearly be much lower, and 2) even though the g-ratio is the same, this non-circular geometry would likely change the conductivity because now there is much less distance between the inner axon and the myelin. In a less extreme example where the axon is simply deformed from a circle but is irregularly shape, the myelin thickness likely doesn't change substantially, but the conductivity could have changed (electrical simulations would likely demonstrate how important this effect is, but I haven't done these).
+
+What I'm trying to get at is, when we are looking for defining a g-ratio in a non-ideal geometry (e.g. not concentric circles), are we looking for the g-ratio to retain its meaning in terms of the myelin thickness estimate, or in terms of how close/far it is from the ideal conductivity from an ideal axon with a g-ratio ~ 0.6?</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">What would be a recommended minimum Magnification/resolution/pixel size?
+Often images contain more axons than can be feasibly analysed by hand. There are different methods to randomly choose axons. e.g. moving from one to the other, or projecting crosses onto the image. </div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">Sampling strategy (often missing but critical)
+Number of axons per image
+Number of images per animal / region
+
+Whether axons were sampled:
+randomly
+exhaustively
+size‑stratified</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_13">Reporting the effective pixel resolution relative to the thinnest measured structure is important. Reporting pixel size alone may be insufficient.</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">1. the person doing the measurement, including automated measurements, should be blinded to the source of the samples (i.e., control vs. experimental samples); the samples should be mixed rather than grouped into separate bins.
+
+2. Axon diameters should probably be reported as a separate measurement although differences may be evident from visual inspection
+
+3. Should discuss how to report the g-ratios in the text as there is frequently major differences for small axons but not large axons. We have oftent tried to capture this by reporting g-rations for different bins of axon calibers.
+
+4. Instead of an axon area measurement, we typically do perimeter/contour measurements to derive axon/fiber diameters. I consider this is equivalent to deriving diamters from an area measurement and would include this as an alternative approach</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">not that I can think of right now; seems comprehensive</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">I'd like to see more thought into fluorescence with super-resolution imaging. With super-resolution methods, we push resolution down into the sub-100nm range (or even closer to 10-20nm with some techniques, which is small enough to resolve individual wraps). Increasingly this is going to be an industry standard approach b/c it is way faster and cheaper than EM</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_18">None that come to mind.</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">We would recommended that minimum Magnification/resolution/pixel size of microscopy method used should be included.
+
+Often images contain more axons than can be feasibly analysed by hand. There are different methods to randomly choose axons. e.g. moving from one to the other, or projecting crosses onto the image. </div>
+        </div>
+    </div> <!-- Close question-block -->
+    <div class="question-block">
+    <h2>Q20: Do you have concerns about the scope or framing of the consensus recommendations as outlined above?</h2>
+    <i>Number of responses: 14</i><br><br>
+        <div class="comments-box">
+            <div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_2">no</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">2D versus 3D measurements are not included. </div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_5">Posing the questions one per page made it difficult to refer back and to understand the scope of the survey. That being said, I think it was comprehensive and very well-documented</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">mathematical models</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_7">No, for me this is a very good summary of the issues connected with g-ratio measurement.</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_8">No</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">I would discourage the use of any line-based method.</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">No</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_13">The guidelines could be further refined by suggesting that researchers report the effective pixel resolution relative to the thinnest structures measured.</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">Hard for me to say at this juncture. I think there will be strong differences of opinion around the issue of circularity and elliptical measurement ( and perhaps even the line measurements). If i strongly disagree with the final consensus recommendations, i may recuse myself as a signatory</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">no</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">Not until I see the results. Sorry to not be able to make the meetings thus far, too overcommitted! THanks for organizing this! Brad</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_18">During our analysis reported in Bagheri et al. (Peterson lab 2024 2024 doi: 10.1002/glia.24589), we were concerned that our approach might be breaking the established norms of g-ratio analysis but we were unable to find a definitive method in the literature. Consequently, achieving a consensus and defining best practices should be a welcome contribution. </div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">I would not recommend the use of line-based approaches for g-ratio measurements.</div>
+        </div>
+    </div></body></html>
