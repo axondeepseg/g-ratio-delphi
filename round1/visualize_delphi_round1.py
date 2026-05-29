@@ -153,7 +153,7 @@ def create_expertise_chart_html(expertise_df):
     chart_html += '</div>'
     return chart_html
 
-def generate_report(csv_path, questions_html_path, output_filename="survey_report.html", anonymize=False):
+def generate_report(csv_path, questions_html_path, output_filename, anonymize=False):
     df = pd.read_csv(csv_path)
     with open(questions_html_path, "r", encoding="utf-8") as f:
         questions_html = f.read()
@@ -298,7 +298,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a HTML survey report from a CSV file.")
     parser.add_argument("csv_path", help="Path to the CSV file containing survey results.")
     parser.add_argument("questions_html", help="Path to the master_questions.html file with the question text and formatting.")
-    parser.add_argument("--output", default="survey_report.html", help="Output HTML file name (default: survey_report.html)")
+    parser.add_argument("--output", default="index.html", help="Output HTML file name (default: survey_report.html)")
     parser.add_argument("--hide-names", action="store_true", help="Show respondent names on hover")
 
     
