@@ -232,12 +232,17 @@ def generate_report(csv_path, questions_html_path, output_filename, anonymize=Fa
             top2_count = counts.get('Agree', 0) + counts.get('Strongly agree', 0)
             bottom2_count = counts.get('Disagree', 0) + counts.get('Strongly disagree', 0)
             agreement_pct = (top2_count / (top2_count + bottom2_count) * 100) if (top2_count + bottom2_count) > 0 else 0
+            badge_text_color = "color: #ffffff;"
             if agreement_pct >= 75:
-                agreement_badge_color = "#27ae60"  # Green for agreement consensus
+                agreement_badge_color = "#27ae60"
+                button_text = f"Agree ({agreement_pct:.0f}%)"
             elif agreement_pct <= 15:
-                agreement_badge_color = "#dc3246"  # Red for disagreement consensus
+                agreement_badge_color = "#dc3246"
+                button_text = f"Disagree ({agreement_pct:.0f}%)"
             else:
-                agreement_badge_color = "#95a5a6"  # Gray for no clear consensus
+                agreement_badge_color = "#ffff94"
+                button_text = f"None ({agreement_pct:.0f}%)"
+                badge_text_color = "color: #000000;"
             agreement_tooltip = f"title='{top2_count} agree, {bottom2_count} disagree'"
             
             chart_html = create_likert_chart_html(counts, LIKERT_ORDER, LIKERT_COLORS)
@@ -247,7 +252,10 @@ def generate_report(csv_path, questions_html_path, output_filename, anonymize=Fa
             <div class="question-block">
                 {question_html}
                 <br>
-                <div class="top2-badge" style="background-color: {agreement_badge_color};" {agreement_tooltip}>Agreement: {agreement_pct:.1f}%</div>
+                <div class="top2-badge" {agreement_tooltip}>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: {agreement_badge_color}; {badge_text_color}">{button_text}</span>
+                </div>
                 {chart_html}
             """
             
