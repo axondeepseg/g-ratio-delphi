@@ -232,13 +232,14 @@ def generate_report(csv_path, questions_html_path, output_filename, anonymize=Fa
             top2_count = counts.get('Agree', 0) + counts.get('Strongly agree', 0)
             bottom2_count = counts.get('Disagree', 0) + counts.get('Strongly disagree', 0)
             agreement_pct = (top2_count / (top2_count + bottom2_count) * 100) if (top2_count + bottom2_count) > 0 else 0
+            disagreement_pct = 100 - agreement_pct
             badge_text_color = "color: #ffffff;"
             if agreement_pct >= 75:
                 agreement_badge_color = "#27ae60"
                 button_text = f"Agree ({agreement_pct:.0f}%)"
             elif agreement_pct <= 15:
                 agreement_badge_color = "#dc3246"
-                button_text = f"Disagree ({agreement_pct:.0f}%)"
+                button_text = f"Disagree ({disagreement_pct:.0f}%)"
             else:
                 agreement_badge_color = "#ffff94"
                 button_text = f"None ({agreement_pct:.0f}%)"
