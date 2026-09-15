@@ -186,27 +186,28 @@ def generate_report(csv_path, questions_html_path, output_filename, anonymize=Fa
     comments_found = True
 
     # first, we plot the distribution of primary and secondary expertise
-    expertise_df = df[
-         [username_col, primary_expertise_col, secondary_expertise_col]
-    ].melt(
-         id_vars=username_col, 
-         value_vars=[primary_expertise_col, secondary_expertise_col], 
-         var_name='Expertise Type', 
-         value_name='Expertise'
-    ).dropna(subset=['Expertise'])
-    expertise_df['Expertise Type'] = expertise_df['Expertise Type'].map({
-         primary_expertise_col: 'Primary Expertise', 
-         secondary_expertise_col: 'Secondary Expertise'
-    })
+    # NOTE: this part was removed in favor of the expertise distribution of round 2, which is slightly different.
+    # expertise_df = df[
+    #      [username_col, primary_expertise_col, secondary_expertise_col]
+    # ].melt(
+    #      id_vars=username_col, 
+    #      value_vars=[primary_expertise_col, secondary_expertise_col], 
+    #      var_name='Expertise Type', 
+    #      value_name='Expertise'
+    # ).dropna(subset=['Expertise'])
+    # expertise_df['Expertise Type'] = expertise_df['Expertise Type'].map({
+    #      primary_expertise_col: 'Primary Expertise', 
+    #      secondary_expertise_col: 'Secondary Expertise'
+    # })
 
-    expertise_chart_html = create_expertise_chart_html(expertise_df)
+    # expertise_chart_html = create_expertise_chart_html(expertise_df)
 
-    html_content += f"""
-    <div class="question-block">
-        <h2>Expertise Distribution</h2>
-        {expertise_chart_html}
-    </div>
-    """
+    # html_content += f"""
+    # <div class="question-block">
+    #     <h2>Expertise Distribution</h2>
+    #     {expertise_chart_html}
+    # </div>
+    # """
 
     # Identify Likert vs Text columns
     for col in df.columns[4:-2]:        
@@ -228,7 +229,7 @@ def generate_report(csv_path, questions_html_path, output_filename, anonymize=Fa
             counts = df[col].value_counts().reindex(LIKERT_ORDER, fill_value=0)
             total = counts.sum()
             
-            # Calculate agreement ()
+            # Calculate agreement
             top2_count = counts.get('Agree', 0) + counts.get('Strongly agree', 0)
             bottom2_count = counts.get('Disagree', 0) + counts.get('Strongly disagree', 0)
             agreement_pct = (top2_count / (top2_count + bottom2_count) * 100) if (top2_count + bottom2_count) > 0 else 0
@@ -308,8 +309,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate a HTML survey report from a CSV file.")
     parser.add_argument("csv_path", help="Path to the CSV file containing survey results.")
     parser.add_argument("questions_html", help="Path to the master_questions.html file with the question text and formatting.")
-    parser.add_argument("--output", default="index.html", help="Output HTML file name (default: survey_report.html)")
-    parser.add_argument("--hide-names", action="store_true", help="Show respondent names on hover")
+    parser.add_argument("--output", default="round1.html", help="Output HTML file name (default: round1.html)")
+    parser.add_argument("--hide-names", action="store_true", help="Hide respondent names on hover")
 
     
     args = parser.parse_args()
