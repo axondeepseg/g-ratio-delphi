@@ -22,7 +22,7 @@ LIKERT_COLORS = {
     'Strongly agree': "#28aa00"
 }
 
-STYLESHEET_PATH = Path(__file__).parent.parent / "round1" / "round1_style.css"
+STYLESHEET_PATH = Path(__file__).parent / "round1_style.css"
 with open(str(STYLESHEET_PATH), "r") as f:
     STYLESHEET = f.read()
 

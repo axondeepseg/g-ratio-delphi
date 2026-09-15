@@ -13,8 +13,18 @@ beautifulsoup4
 First, export the Google Form results as a CSV. Then, anonymize the file with:
 
 ```
-python round1/anonymize.py PATH/TO/RAW/CSV/FILE
+python code/anonymize.py PATH/TO/RAW/CSV/FILE
 ```
+
+<details><summary>Provide an existing mapping</summary>
+To reuse an existing anonymization mapping, pass it with `--mapping-file`:
+
+```
+python code/anonymize.py PATH/TO/RAW/CSV/FILE --mapping-file PATH/TO/anonymization_mapping.json
+```
+
+</details>
+
 
 > [!NOTE]
 > The anonymized CSV file of the round 1 results is available for download here: https://github.com/axondeepseg/g-ratio-delphi/releases/download/r20260529/round1_anonymized.csv
@@ -23,7 +33,8 @@ Navigate to the `docs` directory (this is where github pages deploys from). Run
 the report generation script with:
 
 ```
-python ../round1/visualize_delphi_round1.py PATH/TO/ANONYMIZED/CSV master_questions_r1.html
+python ../code/visualize_delphi_round1.py PATH/TO/ANONYMIZED/CSV master_questions_r1.html
+python ../code/visualize_delphi_round2.py PATH/TO/ANONYMIZED/CSV master_questions_r2.html
 ```
 
-This will create an _index.html_ file, which gh pages will search for. 
+The _index.html_ file will then link to a menu to select either round 1 or 2. 

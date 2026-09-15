@@ -1,0 +1,422 @@
+
+    <html>
+    <head>
+        <title>Survey Results Report</title>
+        <style>body {
+    font-family: sans-serif;
+    margin: 40px;
+    background-color: #f4f7f6;
+    color: #333; 
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+.question-block {
+    margin-bottom: 60px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 40px;
+}
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    font-family: Times New Roman, serif;
+    font-size: 3em;
+}
+h2 {
+    color: #2980b9;
+    font-size: 1.4em;
+}
+img {
+  max-width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Style for agreement badge */
+.top2-badge {
+    display: inline-flex;
+    font-size: 0.8em;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+.top2-badge-label,
+.top2-badge-value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 4px;
+    color: white;
+}
+.top2-badge-label {
+    background: #5c5c5c;
+    min-width: 70px
+}
+.top2-badge-value {
+    min-width: 100px;
+}
+.top2-badge:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+/* Style for comments section */
+.comments-box {
+    padding: 15px;
+    background: #d5dbdb;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+.comment-item {
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-left: 4px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    font-style: normal;
+    font-size: 0.95em;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s;
+}
+.comment-item:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+details {
+    margin-top: 20px;
+}
+summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #2980b9;
+    padding: 12px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    user-select: none;
+    transition: background 0.2s;
+}
+summary:hover {
+    background: #d5dbdb;
+}
+details[open] summary {
+    background: #d5dbdb; border-radius: 5px 5px 0 0;
+}
+
+/* Style for Likert charts */
+.likert-chart {
+    margin: 20px 0;
+}
+
+.likert-stacked-bar {
+    display: flex;
+    height: 40px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.likert-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    transition: opacity 0.2s ease;
+    position: relative;
+}
+
+.likert-segment:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.likert-segment-count {
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Style for expertise chart */
+:root {
+    --primary-color: #264653;
+    --secondary-color: #2a9d8f;
+}
+.expertise-chart {
+    margin: 20px 0;
+}
+
+.expertise-legend {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: right;
+}
+
+.legend-pill {
+    display: inline-block;
+    padding: 6px 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+}
+
+.legend-pill.primary { background: var(--primary-color); }
+.legend-pill.secondary { background: var(--secondary-color); }
+
+.expertise-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.expertise-label {
+    min-width: 180px;
+    font-size: 0.95rem;
+    color: #333;
+    padding-right: 12px;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.expertise-squares {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    min-height: 32px;
+}
+
+.expertise-square {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.expertise-square.primary { background: var(--primary-color); }
+.expertise-square.secondary { background: var(--secondary-color); }</style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Delphi Survey Round 2 Report</h1>
+            <p> <i>Note: For every question, the "Agreement" badge represents the fraction of respondents who agreed, without considering neutral responses. </i></p>
+    
+    <div class="question-block">
+        <h2>Expertise Distribution</h2>
+        <div class="expertise-chart">
+        <div class="expertise-legend">
+            <span class="legend-pill primary">Primary Expertise</span>
+            <span class="legend-pill secondary">Secondary Expertise</span>
+        </div>
+    
+        <div class="expertise-row">
+            <div class="expertise-label">Image analysis & computational methods</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div>
+                <div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        
+        <div class="expertise-row">
+            <div class="expertise-label">MRI / in-vivo imaging</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div>
+                
+            </div>
+        </div>
+        
+        <div class="expertise-row">
+            <div class="expertise-label">Microscopy</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div>
+                <div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        
+        <div class="expertise-row">
+            <div class="expertise-label">Myelin biology</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div><div class="expertise-square primary" ></div>
+                <div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        
+        <div class="expertise-row">
+            <div class="expertise-label">Neuropathology / disease models</div>
+            <div class="expertise-squares">
+                <div class="expertise-square primary" ></div>
+                <div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div><div class="expertise-square secondary" ></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+            <div class="question-block">
+                <section id="q1">
+<h2>Q1</h2>
+<p>Line-based measurements are acceptable to quantify the g-ratio manually.</p>
+<img alt="Example of line-based measurement." src="images_r2/line_based_round2.png" width="60%"/>
+</section>
+                <br>
+                <div class="top2-badge" title='13 agree, 4 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (76%)</span>
+                </div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 9.523809523809524%; background-color: #dc3246; color: white;" title="Strongly disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 9.523809523809524%; background-color: #ff9328; color: #333333;" title="Disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 19.047619047619047%; background-color: #ffff94; color: #333333;" title="Neutral: 4 respondents">
+            <span class="likert-segment-count">4</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 38.095238095238095%; background-color: #bcff79; color: #333333;" title="Agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 23.809523809523807%; background-color: #28aa00; color: white;" title="Strongly agree: 5 respondents">
+            <span class="likert-segment-count">5</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (5)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">at least at the level of the PNS. for example, the g ratio computed from the Donaldson & Hoke area-based data is the same as the g ratio obtained by first converting those data to line-based and then deriving the g ratio</div><div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">Although these measures have a well-established history and continue to serve important purposes, there is growing recognition that a more meaningful characterization of g-ratios requires evaluating their full distribution within a tissue. This is especially relevant if g-ratios are to be linked quantitatively to the MR signal. The latter is probably better to be realised with area-based methods. </div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">It depends on how well preserved the EM sample is, and how perpendicular to axons the sections are cut.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">Line-based will be faster to do manually but not as accurate as area.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">discernment of where the lines are drawn is critical and the number of lines used for both axon and total fiber diameter is also critical</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q2">
+<h2>Q2</h2>
+<p>For axons that are not obliquely cut, an average of at least two axes is required to estimate the diameter.</p>
+<img alt="How to measure non-obliquely cut axons" src="images_r2/ellipse_but_not_oblique.png" width="60%"/>
+</section>
+                <br>
+                <div class="top2-badge" title='16 agree, 2 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (89%)</span>
+                </div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 4.761904761904762%; background-color: #dc3246; color: white;" title="Strongly disagree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 4.761904761904762%; background-color: #ff9328; color: #333333;" title="Disagree: 1 respondents">
+            <span class="likert-segment-count">1</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 14.285714285714285%; background-color: #ffff94; color: #333333;" title="Neutral: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 38.095238095238095%; background-color: #bcff79; color: #333333;" title="Agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 38.095238095238095%; background-color: #28aa00; color: white;" title="Strongly agree: 8 respondents">
+            <span class="likert-segment-count">8</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (5)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_3">but might need to exclude axons with wrinkled outline</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">The minor axis provides an accurate estimate of axon diameter only when the axon has a nearly cylindrical shape and is sectioned orthogonally. In reality, many axons exhibit elliptical cross-sections, causing the minor axis to underestimate the true diameter and the major axis to overestimate it, particularly when the axon is not cut perpendicular to its longitudinal axis.
+
+Measuring both axes does not fully resolve this issue. A reliable determination of the true axonal diameter ultimately requires three-dimensional reconstruction. Nevertheless, at the population level, diameter estimates derived from two-dimensional sections can be surprisingly accurate. As shown in a recent preprint (https://www.biorxiv.org/content/10.64898/2026.03.25.714137v1.full.pdf), the circular-equivalent diameter appears to be the best proxy for the underlying three-dimensional diameter, as illustrated in Figure S2.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">I am against the linear method a priory,  however 2 lines are better than 1</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">I would argue that the axon shown in this image has been cut slightly obliquely. </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_15">although not a fan of line based methods, think area based methods more accurately capture axon diameters and myelin thickness</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q3">
+<h2>Q3</h2>
+<p>For axons identified as oblique cuts, the diameter should be measured with a single line along the shortest axis.</p>
+<img alt="How to measure obliquely cut axons" src="images_r2/ellipse_oblique.png" width="60%"/>
+</section>
+                <br>
+                <div class="top2-badge" title='13 agree, 5 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #ffff94; color: #000000;">None (72%)</span>
+                </div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 14.285714285714285%; background-color: #dc3246; color: white;" title="Strongly disagree: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 9.523809523809524%; background-color: #ff9328; color: #333333;" title="Disagree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 14.285714285714285%; background-color: #ffff94; color: #333333;" title="Neutral: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 52.38095238095239%; background-color: #bcff79; color: #333333;" title="Agree: 11 respondents">
+            <span class="likert-segment-count">11</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 9.523809523809524%; background-color: #28aa00; color: white;" title="Strongly agree: 2 respondents">
+            <span class="likert-segment-count">2</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (6)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #ff9328; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">See answer to previous comment.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_11">I think this is something that could be tested and should be backed up with actual data and not just determined by personal opinion.</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">This could be tested and should be backed up with actual data and not by personal opinion.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">I disagree with your definition of oblique resting on the appearance of a population of axons. Certainly, in the zoomed out image you showed, the entire region of the tissue has been sectioned obliquely to the general axis of the fiber tract. But you cannot assume that every axon in a fiber tract runs perfectly parallel to each other--they don't; axons weave and flex their way through a fiber tract (and of course in the grey matter axons go every which way). I believe we should assume every axon is a cylinder (borne out by 3D EM reconstructions of high pressure-frozen samples) and in ANY case where the axon appears as an elipsoid, we must assume we have sectioned through that single axon obliquely (independent of the the orientation of a fiber bundle at large).</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_4">It will be the most accurate one.</div><div class="comment-item" style="border: 4px solid #dc3246; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">obliquely cut axons should not be used; both axon and myelin thickness are skewed</div>
+                </div>
+            </details>
+            </div>
+            <div class="question-block">
+                <section id="q4">
+<h2>Q4</h2>
+<p>Group comparisons of g-ratio measurements should be stratified by axon diameter (e.g., via a defined binning strategy or scatter analysis).</p>
+<img alt="G-ratio plot stratified by axon diameter" src="images_r2/g-ratio-diameter-stratification.png" width="60%"/>
+</section>
+                <br>
+                <div class="top2-badge" title='18 agree, 0 disagree'>
+                    <span class="top2-badge-label">Consensus</span>
+                    <span class="top2-badge-value" style="background-color: #27ae60; color: #ffffff;">Agree (100%)</span>
+                </div>
+                <div class="likert-chart"><div class="likert-stacked-bar">
+        <div class="likert-segment" style="width: 14.285714285714285%; background-color: #ffff94; color: #333333;" title="Neutral: 3 respondents">
+            <span class="likert-segment-count">3</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 42.857142857142854%; background-color: #bcff79; color: #333333;" title="Agree: 9 respondents">
+            <span class="likert-segment-count">9</span>
+        </div>
+        
+        <div class="likert-segment" style="width: 42.857142857142854%; background-color: #28aa00; color: white;" title="Strongly agree: 9 respondents">
+            <span class="likert-segment-count">9</span>
+        </div>
+        </div></div>
+            
+            <details>
+                <summary>Additional comments (7)</summary>
+                <div class="comments-box">
+                    <div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">see below</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_18">Binning reveals actual relationships that most often lost in the cloud of individual fibre results</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_13">While I "strongly agree" with the necessity of stratification, I would caution against using too few bins or uneven bin widths, which can introduce bias. Ideally, binning should be based on the distribution of the control group, or regression-based approaches should be prioritized.</div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">If an additional dimension is available for examining the data, it can substantially improve our understanding of the research question.</div><div class="comment-item" style="border: 4px solid #28aa00; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">Scatter should be used not binning</div><div class="comment-item" style="border: 4px solid #ffff94; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_17">I understand the rationale for this, but the actual value added to a paper by doing this is probably incremental at best. </div><div class="comment-item" style="border: 4px solid #bcff79; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_16">depends on the question being asked; stratifying provides additional discernment for analysis</div>
+                </div>
+            </details>
+            </div>
+    <div class="question-block">
+    <h2>Q5: Do you have questions or comments regarding any of the questions? </h2>
+    <i>Number of responses: 4</i><br><br>
+        <div class="comments-box" style="border-top-right-radius: 5px; border-top-left-radius: 5px;">
+            <div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_6">regarding the graphical/statistical analysis of g ratio plots: the method above is sub-optimal, but provides a good opportunity to balance heteroscedasticity in the repeated measures g ratio data. A simpler approach is to plot axon diameters vs fiber diameters for each animal. in the absence of statistical evidence for a non-linear correlation (i.e. Spearman's rho >> 0.7), the slope of the regression is the g ratio. Accordingly, there is no need to compute the g ratio from individual fibers, which introduces additional errors of measurement.</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_12">No</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_19">A bit more context around your questions would be helpful, as you seem to switch between g-ratio and axon diameter, which makes it difficult to follow the specific focus of the discussion.</div><div class="comment-item" style="border: 4px solid #95a5a6; padding: 10px; border-radius: 5px; margin-bottom: 10px;" title="expert_20">Why such a strong focus on line measurements?</div>
+        </div>
+    </div></body></html>
