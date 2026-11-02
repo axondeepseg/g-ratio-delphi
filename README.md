@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23772601.svg)](https://doi.org/10.5281/zenodo.23772601)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23896909.svg)](https://doi.org/10.5281/zenodo.23896909)
 
 # Overview
 This utility parses a CSV export of a Google Form Delphi survey and outputs a
